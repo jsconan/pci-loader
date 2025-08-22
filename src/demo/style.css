@@ -40,6 +40,13 @@
     --tab-border-selected: #646cff;
     --tab-bar-border-color: #dadada;
 
+    --pci-background: #f9f9f9;
+    --pci-border-color: #f0f0f0;
+
+    --error-color: #d8000c;
+    --error-background: #fff0f0;
+    --error-border: #d8000c;
+
     font-family: var(--font-family);
     line-height: var(--line-height);
     font-weight: var(--font-weight);
@@ -86,6 +93,13 @@
         --tab-border-hover: #424add;
         --tab-border-selected: #646cff;
         --tab-bar-border-color: #686868;
+
+        --pci-background: #3a3a3a;
+        --pci-border-color: #4a4a4a;
+
+        --error-color: #d8000c;
+        --error-background: #fff0f0;
+        --error-border: #d8000c;
     }
 }
 

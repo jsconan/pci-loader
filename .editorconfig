@@ -1,0 +1,31 @@
+# http://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+
+[**.{ts,js,css,svelte}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[**.json]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[**.{yaml,yml}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[**.{html,tpl}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[Makefile]
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = true

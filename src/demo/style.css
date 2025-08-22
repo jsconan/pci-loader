@@ -1,3 +1,6 @@
+@import 'svelte-highlight/styles/atom-one-light.css' (prefers-color-scheme: light);
+@import 'svelte-highlight/styles/atom-one-dark.css' (prefers-color-scheme: dark);
+
 :root {
     --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     --font-size: 14px;

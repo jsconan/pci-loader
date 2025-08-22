@@ -1,0 +1,34 @@
+name: Synchronize branches
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    align_develop_to_main:
+        permissions:
+            contents: write
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout main
+              uses: actions/checkout@v4
+              with:
+                  ref: main
+                  fetch-depth: 0
+                  fetch-tags: true
+
+            - name: Configure git
+              run: |
+                  git config user.name "github-actions"
+                  git config user.email "github-actions@github.com"
+
+            - name: Checkout develop
+              run: git checkout develop
+
+            - name: Merge main into develop
+              run: git merge main
+
+            - name: Push changes
+              run: git push origin develop

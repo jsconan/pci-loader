@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Implement a scoped PCI loader
 - Implement a PCI registry
 - Implement a scoped AMD loader on top of SystemJS
 - Project's bootstrap.

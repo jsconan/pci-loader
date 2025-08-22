@@ -3,4 +3,9 @@ declare namespace components {
         value: string;
         label: string;
     };
+
+    export type Tab = {
+        key: string;
+        label: string;
+    };
 }

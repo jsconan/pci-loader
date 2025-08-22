@@ -31,6 +31,15 @@
     --select-focus: #646cff;
     --select-arrow: #888;
 
+    --tab-background: #f9f9f9;
+    --tab-background-hover: #f0f0f0;
+    --tab-background-selected: #dadada;
+    --tab-text: #000;
+    --tab-border-color: transparent;
+    --tab-border-hover: #424add;
+    --tab-border-selected: #646cff;
+    --tab-bar-border-color: #dadada;
+
     font-family: var(--font-family);
     line-height: var(--line-height);
     font-weight: var(--font-weight);
@@ -68,6 +77,15 @@
         --select-border-hover: #646cff;
         --select-focus: #646cff;
         --select-arrow: #888;
+
+        --tab-background: #3a3a3a;
+        --tab-background-hover: #4a4a4a;
+        --tab-background-selected: #686868;
+        --tab-text: #fff;
+        --tab-border-color: transparent;
+        --tab-border-hover: #424add;
+        --tab-border-selected: #646cff;
+        --tab-bar-border-color: #686868;
     }
 }
 

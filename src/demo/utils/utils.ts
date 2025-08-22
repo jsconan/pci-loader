@@ -36,3 +36,51 @@ export async function prettify(snippet: string): Promise<string> {
         }
     }
 }
+
+/**
+ * Serializes the given resource into a string representation.
+ * @param resource The resource to serialize.
+ * @param track A set of already visited resources to avoid circular references.
+ * @returns The serialized string representation of the resource.
+ */
+export function serializeCode(resource: unknown, track?: Set<unknown>): string {
+    track = track || new Set();
+
+    if (typeof resource === 'undefined') {
+        return 'undefined';
+    }
+    if (typeof resource === 'function') {
+        return resource.toString();
+    }
+    if (resource === null) {
+        return 'null';
+    }
+    if (Array.isArray(resource)) {
+        if (track.has(resource)) {
+            return '[Circular]';
+        }
+        track.add(resource);
+        return `[${resource.map(item => serializeCode(item, track)).join(', ')}]`;
+    }
+    if (typeof resource === 'object') {
+        if (track.has(resource)) {
+            return '[Circular]';
+        }
+        track.add(resource);
+        const entries = Object.entries(resource).map(([key, value]) => {
+            if (typeof value === 'function') {
+                const fnStr = value.toString();
+                if (fnStr.match(/^function\s*\(/)) {
+                    return `${key}${fnStr.replace(/^function/, '')}`;
+                }
+                if (fnStr.match(/^function\s+\w+/) || fnStr.match(/^\s*((\w+)|(\([^)]+\)))\s*=>/)) {
+                    return `"${key}": ${fnStr}`;
+                }
+                return `${fnStr}`;
+            }
+            return `"${key}": ${serializeCode(value, track)}`;
+        });
+        return `{${entries.join(', ')}}`;
+    }
+    return JSON.stringify(resource);
+}

@@ -23,6 +23,14 @@
     --button-border-hover: #646cff;
     --button-focus: #646cff;
 
+    --select-background: #f9f9f9;
+    --select-background-hover: #f0f0f0;
+    --select-text: #000;
+    --select-border-color: transparent;
+    --select-border-hover: #646cff;
+    --select-focus: #646cff;
+    --select-arrow: #888;
+
     font-family: var(--font-family);
     line-height: var(--line-height);
     font-weight: var(--font-weight);
@@ -52,6 +60,14 @@
         --button-border-color: transparent;
         --button-border-hover: #646cff;
         --button-focus: #646cff;
+
+        --select-background: #3a3a3a;
+        --select-background-hover: #4a4a4a;
+        --select-text: #ffffff;
+        --select-border-color: transparent;
+        --select-border-hover: #646cff;
+        --select-focus: #646cff;
+        --select-arrow: #888;
     }
 }
 

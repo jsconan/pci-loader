@@ -1,56 +1,86 @@
 <script lang="ts">
-    import Counter from 'demo/Counter.svelte';
-    import typescriptLogo from 'demo/typescript.svg';
-    import viteLogo from '/vite.svg';
+    import Playground from 'demo/components/Playground.svelte';
+
+    const samples: Record<string, components.Sample> = {
+        pci: {
+            type: 'pci',
+            url: '/samples/pci.js',
+            description: 'PCI example.'
+        },
+        pciLoadFailure: {
+            type: 'pci',
+            url: '/samples/pci-load-failure.js',
+            description: 'PCI failure at loading.'
+        },
+        pciRenderFailure: {
+            type: 'pci',
+            url: '/samples/pci-render-failure.js',
+            description: 'PCI failure at rendering.'
+        },
+        bundle: {
+            type: 'amd',
+            url: '/samples/bundle.js',
+            description: 'Bundle example.'
+        },
+        split: {
+            type: 'amd',
+            url: '/samples/internal.js',
+            description: 'Split example.',
+            dependencies: [
+                {
+                    name: 'external',
+                    url: '/samples/external.js'
+                }
+            ]
+        },
+        resource: {
+            type: 'amd',
+            url: '/samples/resource.js',
+            description: 'Resource example.'
+        },
+        exports: {
+            type: 'amd',
+            url: '/samples/exports.js',
+            description: 'Exports example.'
+        },
+        invalid: {
+            type: 'amd',
+            url: '/samples/invalid.js',
+            description: 'Invalid example.'
+        },
+        error: {
+            type: 'amd',
+            url: '/samples/error.js',
+            description: 'Error example.'
+        }
+    };
 </script>
 
-<div>
-    <a href="https://vite.dev" target="_blank">
-        <img src={viteLogo} class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-        <img src={typescriptLogo} class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-        <Counter />
+<main>
+    <div class="title">
+        <h1>PCI Loader Demo</h1>
+        <p>Welcome to the PCI Loader demo! This application demonstrates how to use the library.</p>
     </div>
-    <p class="read-the-docs">Click on the Vite and TypeScript logos to learn more</p>
-</div>
+    <Playground {samples} />
+</main>
 
 <style>
-    a {
-        font-weight: 500;
-        color: var(--link-color);
-        text-decoration: inherit;
-    }
-    a:hover {
-        color: var(--link-hover-color);
+    main {
+        flex: 1;
     }
 
-    h1 {
-        font-size: 3.2em;
-        line-height: 1.1;
+    .title {
+        display: flex;
+        align-items: flex-end;
     }
-
-    .logo {
-        height: 6em;
-        padding: 1.5em;
-        will-change: filter;
-        transition: filter 300ms;
+    .title p {
+        flex: 1;
+        margin-top: 1rem;
+        line-height: 2rem;
+        text-align: center;
     }
-    .logo:hover {
-        filter: drop-shadow(0 0 2em #646cffaa);
-    }
-    .logo.vanilla:hover {
-        filter: drop-shadow(0 0 2em #3178c6aa);
-    }
-
-    .card {
-        padding: 2em;
-    }
-
-    .read-the-docs {
-        color: var(--foreground-muted);
+    .title h1 {
+        margin-top: 1rem;
+        line-height: 2rem;
     }
 </style>

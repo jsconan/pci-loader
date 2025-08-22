@@ -1,3 +1,6 @@
+@import 'svelte-highlight/styles/atom-one-light.css' (prefers-color-scheme: light);
+@import 'svelte-highlight/styles/atom-one-dark.css' (prefers-color-scheme: dark);
+
 :root {
     --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     --font-size: 14px;
@@ -18,6 +21,31 @@
     --button-text: #000;
     --button-border-color: transparent;
     --button-border-hover: #646cff;
+    --button-focus: #646cff;
+
+    --select-background: #f9f9f9;
+    --select-background-hover: #f0f0f0;
+    --select-text: #000;
+    --select-border-color: transparent;
+    --select-border-hover: #646cff;
+    --select-focus: #646cff;
+    --select-arrow: #888;
+
+    --tab-background: #f9f9f9;
+    --tab-background-hover: #f0f0f0;
+    --tab-background-selected: #dadada;
+    --tab-text: #000;
+    --tab-border-color: transparent;
+    --tab-border-hover: #424add;
+    --tab-border-selected: #646cff;
+    --tab-bar-border-color: #dadada;
+
+    --pci-background: #f9f9f9;
+    --pci-border-color: #f0f0f0;
+
+    --error-color: #d8000c;
+    --error-background: #fff0f0;
+    --error-border: #d8000c;
 
     font-family: var(--font-family);
     line-height: var(--line-height);
@@ -48,20 +76,64 @@
         --button-border-color: transparent;
         --button-border-hover: #646cff;
         --button-focus: #646cff;
+
+        --select-background: #3a3a3a;
+        --select-background-hover: #4a4a4a;
+        --select-text: #ffffff;
+        --select-border-color: transparent;
+        --select-border-hover: #646cff;
+        --select-focus: #646cff;
+        --select-arrow: #888;
+
+        --tab-background: #3a3a3a;
+        --tab-background-hover: #4a4a4a;
+        --tab-background-selected: #686868;
+        --tab-text: #fff;
+        --tab-border-color: transparent;
+        --tab-border-hover: #424add;
+        --tab-border-selected: #646cff;
+        --tab-bar-border-color: #686868;
+
+        --pci-background: #3a3a3a;
+        --pci-border-color: #4a4a4a;
+
+        --error-color: #d8000c;
+        --error-background: #fff0f0;
+        --error-border: #d8000c;
     }
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    margin: 0;
     display: flex;
-    place-items: center;
+    margin: 0;
+    padding: 0;
     min-width: 320px;
     min-height: 100vh;
+    box-sizing: border-box;
+    font-size: var(--font-size);
+    color: var(--foreground);
+    background-color: var(--background);
 }
 
 #app {
-    max-width: 1280px;
-    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     padding: 2rem;
-    text-align: center;
+}
+
+a {
+    font-weight: 500;
+    color: var(--link-color);
+    text-decoration: inherit;
+}
+a:hover {
+    color: var(--link-hover-color);
 }

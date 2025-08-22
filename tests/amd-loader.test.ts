@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { AMDLoader } from 'lib/amd-loader.ts';
-import type { ESM } from 'lib/systemjs';
+import type { ESM } from 'lib/systemjs.d.ts';
 import { samplesHost } from 'tests/setup/config.ts';
 import { Script } from 'tests/setup/utils.ts';
 import { describe, expect, it, vi } from 'vitest';

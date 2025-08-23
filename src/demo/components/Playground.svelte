@@ -303,7 +303,7 @@
         margin: 1rem 0;
     }
     .output span {
-        color: var(--foreground-muted);
+        color: var(--text-color-muted);
         font-weight: 500;
         line-height: 2rem;
     }

@@ -7,29 +7,37 @@
     --font-weight: 400;
     --line-height: 1.5;
 
-    --border-radius: 8px;
-
     --background: #efe8e4;
-    --foreground: #213547;
-    --foreground-muted: #888;
+    --text-color: #213547;
+    --text-color-muted: #888;
 
-    --link-color: #646cff;
-    --link-hover-color: #747bff;
+    --border-radius: 8px;
+    --border-color: #aaa;
+
+    --link-color: #424cff;
+    --link-hover-color: #101bf2;
+    --link-focus: #646cff;
+    --link-border-radius: 4px;
+
+    --code-background: #f9f9f9;
+    --code-text: #000;
 
     --button-background: #f9f9f9;
     --button-background-hover: #f0f0f0;
     --button-text: #000;
+    --button-focus: #646cff;
     --button-border-color: transparent;
     --button-border-hover: #646cff;
-    --button-focus: #646cff;
+    --button-border-radius: 8px;
 
     --select-background: #f9f9f9;
     --select-background-hover: #f0f0f0;
     --select-text: #000;
-    --select-border-color: transparent;
-    --select-border-hover: #646cff;
     --select-focus: #646cff;
     --select-arrow: #888;
+    --select-border-color: transparent;
+    --select-border-hover: #646cff;
+    --select-border-radius: 8px;
 
     --tab-background: #f9f9f9;
     --tab-background-hover: #f0f0f0;
@@ -52,7 +60,7 @@
     font-weight: var(--font-weight);
 
     color-scheme: light dark;
-    color: var(--foreground);
+    color: var(--text-color);
     background-color: var(--background);
 
     font-synthesis: none;
@@ -64,31 +72,38 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #242424;
-        --foreground: rgba(255, 255, 255, 0.87);
-        --foreground-muted: #888;
+        --text-color: rgba(255, 255, 255, 0.87);
+        --text-color-muted: #888;
 
-        --link-color: #646cff;
-        --link-hover-color: #535bf2;
+        --border-radius: 8px;
+        --border-color: #444;
+
+        --link-color: #868cff;
+        --link-hover-color: #757bf2;
+        --link-focus: #646cff;
+
+        --code-background: #c9c9c9;
+        --code-text: #000;
 
         --button-background: #3a3a3a;
         --button-background-hover: #4a4a4a;
         --button-text: #ffffff;
+        --button-focus: #646cff;
         --button-border-color: transparent;
         --button-border-hover: #646cff;
-        --button-focus: #646cff;
 
         --select-background: #3a3a3a;
         --select-background-hover: #4a4a4a;
         --select-text: #ffffff;
-        --select-border-color: transparent;
-        --select-border-hover: #646cff;
         --select-focus: #646cff;
         --select-arrow: #888;
+        --select-border-color: transparent;
+        --select-border-hover: #646cff;
 
         --tab-background: #3a3a3a;
         --tab-background-hover: #4a4a4a;
         --tab-background-selected: #686868;
-        --tab-text: #fff;
+        --tab-text: #ffffff;
         --tab-border-color: transparent;
         --tab-border-hover: #424add;
         --tab-border-selected: #646cff;
@@ -117,7 +132,7 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
     font-size: var(--font-size);
-    color: var(--foreground);
+    color: var(--text-color);
     background-color: var(--background);
 }
 
@@ -126,14 +141,28 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 2rem;
+    padding: 0;
 }
 
 a {
+    appearance: none;
+    position: relative;
     font-weight: 500;
+    outline: none;
     color: var(--link-color);
     text-decoration: inherit;
 }
 a:hover {
     color: var(--link-hover-color);
+}
+a:focus::after,
+a:focus-visible::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -6px;
+    right: -6px;
+    bottom: -4px;
+    border: 2px solid var(--link-focus);
+    border-radius: var(--link-border-radius, 4px);
 }

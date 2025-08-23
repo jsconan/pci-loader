@@ -20,12 +20,13 @@ jobs:
 
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
+                  cache: 'npm'
 
             # See https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
             - name: Cache node modules

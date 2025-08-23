@@ -48,6 +48,13 @@
     --tab-border-selected: #646cff;
     --tab-bar-border-color: #dadada;
 
+    --nav-menu-background: #f9f9f9;
+    --nav-menu-background-hover: #f9f9f9;
+    --nav-menu-text: #000;
+    --nav-menu-focus: #646cff;
+    --nav-menu-text-hover: #646cff;
+    --nav-menu-selected: #424cff;
+
     --pci-background: #f9f9f9;
     --pci-border-color: #f0f0f0;
 
@@ -108,6 +115,13 @@
         --tab-border-hover: #424add;
         --tab-border-selected: #646cff;
         --tab-bar-border-color: #686868;
+
+        --nav-menu-background: #3a3a3a;
+        --nav-menu-background-hover: #3a3a3a;
+        --nav-menu-text: #ffffff;
+        --nav-menu-focus: #646cff;
+        --nav-menu-text-hover: #646cff;
+        --nav-menu-selected: #868cff;
 
         --pci-background: #3a3a3a;
         --pci-border-color: #4a4a4a;

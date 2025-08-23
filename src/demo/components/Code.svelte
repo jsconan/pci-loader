@@ -3,7 +3,11 @@
     import { Highlight, LineNumbers } from 'svelte-highlight';
     import language from 'svelte-highlight/languages/javascript';
 
-    let { code }: { code: string | undefined } = $props();
+    interface Props {
+        code: string | undefined;
+    }
+
+    let { code }: Props = $props();
 
     let formattedCode: string | undefined = $derived(code);
 

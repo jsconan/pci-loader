@@ -1,7 +1,11 @@
 <script lang="ts">
     import Code from 'demo/components/Code.svelte';
 
-    let { url }: { url?: string } = $props();
+    interface Props {
+        url?: string;
+    }
+
+    let { url }: Props = $props();
     let code: string = $state('');
     let fileName: string = $state('');
 

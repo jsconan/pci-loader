@@ -1,9 +1,13 @@
 <script lang="ts">
-    let {
-        children,
-        onclick,
-        disabled = false
-    }: { children?: any; onclick?: () => void; disabled?: boolean } = $props();
+    import type { Snippet } from 'svelte';
+
+    interface Props {
+        children?: Snippet;
+        onclick?: () => void;
+        disabled?: boolean;
+    }
+
+    let { children, onclick, disabled = false }: Props = $props();
 </script>
 
 <button type="button" {onclick} disabled={disabled ? true : false}>

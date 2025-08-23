@@ -1,15 +1,12 @@
 <script lang="ts">
-    let {
-        items,
-        value = $bindable(''),
-        onselect,
-        disabled = false
-    }: {
+    interface Props {
         items: components.DropdownItem[];
         value?: string;
         onselect?: (value?: string) => void;
         disabled?: boolean;
-    } = $props();
+    }
+
+    let { items, value = $bindable(''), onselect, disabled = false }: Props = $props();
 </script>
 
 <span class="select">

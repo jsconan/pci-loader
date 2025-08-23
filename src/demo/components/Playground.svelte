@@ -16,6 +16,10 @@
     import { AMDLoader, PCILoader, type PCI } from 'src/main';
     import { onMount } from 'svelte';
 
+    interface Props {
+        samples?: Record<string, components.Sample>;
+    }
+
     const defaultTab = 'result';
     const tabs = [
         {
@@ -33,7 +37,7 @@
         }
     ];
 
-    let { samples = {} }: { samples?: Record<string, components.Sample> } = $props();
+    let { samples = {} }: Props = $props();
 
     let selectedSample: string = $state('pci');
     let samplesList: components.DropdownItem[] = Object.keys(samples).map(key => ({

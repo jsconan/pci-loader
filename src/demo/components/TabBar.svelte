@@ -1,10 +1,14 @@
 <script lang="ts">
-    let {
-        tabs,
-        active = $bindable(''),
-        children,
-        onclick
-    }: { tabs: components.Tab[]; active: string; children?: any; onclick?: (key: string) => void } = $props();
+    import type { Snippet } from 'svelte';
+
+    interface Props {
+        tabs: components.Tab[];
+        active: string;
+        children?: Snippet;
+        onclick?: (key: string) => void;
+    }
+
+    let { tabs, active = $bindable(''), children, onclick }: Props = $props();
 
     function setActiveTab(key: string) {
         active = key;

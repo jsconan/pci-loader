@@ -28,7 +28,10 @@
     },
     "type": "module",
     "files": [
-        "dist"
+        "dist",
+        "CHANGELOG.md",
+        "README.md",
+        "LICENSE"
     ],
     "main": "dist/index.umd.js",
     "module": "dist/index.es.js",
@@ -41,18 +44,20 @@
         }
     },
     "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
-        "preview": "vite preview",
+        "dev": "vite --config vite.config.lib.ts",
+        "build": "npm run build:lib && npm run build:static",
+        "build:lib": "tsc && vite build --config vite.config.lib.ts",
+        "build:static": "tsc && vite build --config vite.config.static.ts",
+        "preview": "npm run build:static && vite preview --config vite.config.static.ts",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "lint": "prettier --check . && eslint .",
         "lint:report": "eslint . --output-file eslint_report.json --format json",
-        "test": "vitest run",
-        "test:watch": "vitest run --watch",
-        "test:coverage": "vitest run --coverage --coverage.reporter text",
-        "test:report": "vitest run --coverage --coverage.reporter text --coverage.reporter html && open .coverage/index.html",
-        "test:ci": "vitest run --coverage --coverage.reporter text --coverage.reporter clover",
+        "test": "vitest run --config vite.config.lib.ts ",
+        "test:watch": "vitest run --config vite.config.lib.ts --watch",
+        "test:coverage": "vitest run --config vite.config.lib.ts --coverage --coverage.reporter text",
+        "test:report": "vitest run --config vite.config.lib.ts --coverage --coverage.reporter text --coverage.reporter html && open .coverage/index.html",
+        "test:ci": "vitest run --config vite.config.lib.ts --coverage --coverage.reporter text --coverage.reporter clover",
         "prepack": "npm run lint && npm run test && npm run build",
         "prepare": "husky || true"
     },

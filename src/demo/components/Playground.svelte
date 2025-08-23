@@ -14,7 +14,7 @@
     import { codeImportPCILoader, codeLoadPCI, codeLoadPCIThenRender, codeRenderPCI } from 'demo/utils/code-for-pci.ts';
     import { serializeCode } from 'demo/utils/utils.ts';
     import { AMDLoader, PCILoader, type PCI } from 'src/main';
-    import { onMount } from 'svelte';
+    import { onDestroy, onMount } from 'svelte';
 
     interface Props {
         samples?: Record<string, components.Sample>;
@@ -193,6 +193,10 @@
 
     onMount(() => {
         reset();
+    });
+
+    onDestroy(() => {
+        destroyPCI();
     });
 </script>
 

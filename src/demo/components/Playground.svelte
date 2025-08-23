@@ -200,11 +200,11 @@
     });
 </script>
 
-<section>
+<article>
     <header>
-        <aside>
+        <menu>
             <Dropdown items={samplesList} bind:value={selectedSample} disabled={false} onselect={reset} />
-        </aside>
+        </menu>
         <menu>
             <Button onclick={load} disabled={states.loading}>
                 Load {samples[selectedSample].description}
@@ -219,7 +219,7 @@
 
     <TabBar {tabs} bind:active={activeTab}>
         <Tab name="result" active={activeTab}>
-            <article>
+            <div class="result">
                 {#if samples[selectedSample].type == 'pci'}
                     <menu>
                         <Button onclick={showPCIResponse} disabled={!states.rendered}>Get PCI's response</Button>
@@ -241,7 +241,7 @@
                         <Code code={output} />
                     {/if}
                 </div>
-            </article>
+            </div>
         </Tab>
         <Tab name="code" active={activeTab}>
             <div class="code">
@@ -251,25 +251,26 @@
             </div>
         </Tab>
         <Tab name="source" active={activeTab}>
-            {#each files as url (url)}
-                <CodeFile {url} />
-            {/each}
+            <div class="source">
+                {#each files as url (url)}
+                    <CodeFile {url} />
+                {/each}
+            </div>
         </Tab>
     </TabBar>
-</section>
+</article>
 
 <style>
-    section {
+    article {
         display: flex;
         flex-direction: column;
-        max-width: 1280px;
-        margin: 0 auto;
     }
 
     header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 1rem;
         padding: 0;
         margin-bottom: 1rem;
     }
@@ -278,15 +279,6 @@
         gap: 1rem;
         margin: 1rem 0;
         padding: 0;
-    }
-
-    aside {
-        margin: 0;
-        padding: 0;
-    }
-
-    article {
-        flex: 1;
     }
 
     .error {

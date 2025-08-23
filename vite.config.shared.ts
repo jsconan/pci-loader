@@ -6,6 +6,9 @@ import dts from 'vite-plugin-dts';
 import type { ViteUserConfig } from 'vitest/config';
 import packageInfo from './package.json';
 
+const markdownSuffixes = ['.md', 'LICENSE'];
+const isMarkdownFile = (id: string): boolean => markdownSuffixes.some(suffix => id.endsWith(suffix));
+
 const externalDependencies = [
     ...Object.keys(packageInfo.dependencies || {}),
     ...Object.keys(packageInfo.peerDependencies || {})
@@ -20,7 +23,18 @@ const plugins: PluginOption[] = [
         insertTypesEntry: true,
         rollupTypes: true,
         copyDtsFiles: true
-    })
+    }),
+    // Custom plugin to load markdown files
+    {
+        name: 'markdown-loader',
+        transform(code, id) {
+            if (isMarkdownFile(id)) {
+                // For .md files, get the raw content
+                return `export default ${JSON.stringify(code)};`;
+            }
+            return undefined;
+        }
+    }
 ];
 const alias: AliasOptions = {
     src: resolve(__dirname, 'src/'),
@@ -94,7 +108,10 @@ export const staticConfig: UserConfig = {
                     prettier: ['prettier/standalone'],
                     'prettier-plugin-estree': ['prettier/plugins/estree'],
                     'prettier-plugin-html': ['prettier/plugins/html'],
-                    'prettier-plugin-typescript': ['prettier/plugins/typescript']
+                    'prettier-plugin-typescript': ['prettier/plugins/typescript'],
+                    readme: ['root/README.md'],
+                    changelog: ['root/CHANGELOG.md'],
+                    license: ['root/LICENSE']
                 }
             }
         }

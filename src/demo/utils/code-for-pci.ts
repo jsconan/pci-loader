@@ -3,7 +3,7 @@ export function codeImportPCILoader(url: string): string {
 import { PCILoader } from 'pci-loader';
 
 // Create a new instance of the PCILoader for the PCI's runtime '${url}'
-const pciLoader = new PCILoader(${url});
+const pciLoader = new PCILoader('${url}');
 `;
 }
 
@@ -110,7 +110,7 @@ const config = {
 
     // No need to pass the 'onready' callback, the PCI loader will take over.
     // However, you can still provide it if needed, it will be wrapped.
-    // onready(interaction, initState) { ... }
+    // onready(interaction, initState) { }
 };
 
 // The state can contain anything needed to restore the PCI

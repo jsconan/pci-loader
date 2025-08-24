@@ -120,7 +120,7 @@ export class PCIRegistry implements PCI.Registry {
      * const registry = new PCIRegistry();
      *
      * // Register a PCI's runtime
-     * registry.register({ typeIdentifier, ... });
+     * registry.register({ typeIdentifier, getInstance(container, config, state) {} });
      *
      * // Prepare the container and config for rendering the PCI
      * // Be sure to have the container prefilled with the layout expected by the PCI's runtime

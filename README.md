@@ -220,7 +220,7 @@ Create a new `PCILoader` instance for a particular PCI, specifying the name, whi
 ```typescript
 import { PCILoader } from 'pci-loader';
 
-const loader = new PCILoader('/path/to/myPCI/runtime.js', 'myPCI);
+const loader = new PCILoader('/path/to/myPCI/runtime.js', 'myPCI');
 ```
 
 From the created `PCILoader`, we can now load the PCI's runtime, and possibly get an instance from it.
@@ -535,7 +535,7 @@ import { PCIRegistry } from 'pci-loader';
 const registry = new PCIRegistry();
 
 // Register a PCI's runtime
-registry.register({ ... });
+registry.register({ typeIdentifier, getInstance(container, config, state) {} });
 
 // Prepare the container and config for rendering the PCI
 // Be sure to have the container prefilled with the layout expected by the PCI's runtime

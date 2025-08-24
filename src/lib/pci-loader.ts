@@ -275,7 +275,9 @@ export class PCILoader {
      *
      *     // No need to pass the 'onready' callback, the PCI loader will take over.
      *     // However, you can still provide it if needed, it will be wrapped.
-     *     // onready(interaction, initState) { ... }
+     *     // onready(interaction, initState) {
+     *         console.log('PCI is ready');
+     *     }
      * };
      *
      * // The state can contain anything needed to restore the PCI

@@ -3,6 +3,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { resolve } from 'path';
 import type { AliasOptions, ESBuildOptions, PluginOption, UserConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import type { ViteUserConfig } from 'vitest/config';
 import packageInfo from './package.json';
 
@@ -131,7 +132,19 @@ export const staticConfig: UserConfig = {
         }
     },
     esbuild,
-    plugins,
+    plugins: [
+        ...plugins,
+        // Copy HTML files and inject Vite's global constants into them
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'public/*.html',
+                    dest: '.',
+                    transform: contents => contents.toString().replace(/__BASE_URL__/g, baseUrl)
+                }
+            ]
+        })
+    ],
     resolve: {
         alias
     }

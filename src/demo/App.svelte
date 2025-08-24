@@ -1,7 +1,6 @@
 <script lang="ts">
     import { mainMenu } from 'demo/config.ts';
     import { p } from 'demo/router.ts';
-    import type { router } from 'demo/types.d.ts';
     import packageInfo from 'root/package.json';
     import { isActiveLink, Router } from 'sv-router';
 
@@ -18,7 +17,7 @@
             </svg>
             <menu>
                 {#each mainMenu as item}
-                    <a href={(p as router.Navigate)(item.url, item.params)} use:isActiveLink>{item.label}</a>
+                    <a href={p(item.url, item.params)} use:isActiveLink>{item.label}</a>
                 {/each}
             </menu>
             <svg viewBox="0 0 2 3" aria-hidden="true">

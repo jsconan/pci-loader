@@ -77,12 +77,12 @@
             // Redirect all 404s to the homepage, preserving the path
             var path = window.location.pathname + window.location.search + window.location.hash;
             window.localStorage.setItem('redirectPath', path);
-            window.location.replace('/');
+            window.location.replace('__BASE_URL__');
         </script>
     </head>
     <body>
         <h1>404 - Not Found</h1>
         <p>The page you are looking for does not exist.</p>
-        <p>Redirecting you to the <a href="/" title="Homepage">homepage...</a></p>
+        <p>Redirecting you to the <a href="__BASE_URL__" title="Homepage">homepage...</a></p>
     </body>
 </html>

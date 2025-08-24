@@ -27,11 +27,11 @@
         grid-template-areas: 'select';
         align-items: center;
         width: 100%;
-        min-width: 25ch;
+        min-width: 30ch;
         max-width: 50ch;
         line-height: 1.1;
         padding: 0;
-        font-size: 1rem;
+        font-size: 2rem;
         font-family: inherit;
         border: 1px solid var(--select-border-color);
         border-radius: var(--select-border-radius, 8px);
@@ -82,5 +82,36 @@
         bottom: -1px;
         border: 2px solid var(--select-focus);
         border-radius: var(--select-border-radius, 8px);
+    }
+
+    @media (max-width: 1200px) {
+        .select {
+            min-width: 25ch;
+            max-width: 45ch;
+            font-size: 1.8rem;
+        }
+    }
+    @media (max-width: 1000px) {
+        .select {
+            min-width: 20ch;
+            max-width: 40ch;
+            font-size: 1.6rem;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .select {
+            min-width: 15ch;
+            max-width: 35ch;
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .select {
+            min-width: 10ch;
+            max-width: 30ch;
+            font-size: 1.2rem;
+        }
     }
 </style>

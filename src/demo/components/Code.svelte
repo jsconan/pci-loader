@@ -18,7 +18,34 @@
 </script>
 
 <CopyToClipboard content={formattedCode}>
-    <Highlight {language} code={formattedCode} let:highlighted>
-        <LineNumbers {highlighted} />
-    </Highlight>
+    <div>
+        <Highlight {language} code={formattedCode} let:highlighted>
+            <LineNumbers {highlighted} />
+        </Highlight>
+    </div>
 </CopyToClipboard>
+
+<style>
+    @media (max-width: 1200px) {
+        div {
+            font-size: 1.8rem;
+        }
+    }
+    @media (max-width: 1000px) {
+        div {
+            font-size: 1.6rem;
+        }
+    }
+
+    @media (max-width: 800px) {
+        div {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (max-width: 600px) {
+        div {
+            font-size: 1.2rem;
+        }
+    }
+</style>

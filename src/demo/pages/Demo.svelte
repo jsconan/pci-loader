@@ -39,4 +39,39 @@
         margin-top: 1rem;
         line-height: 2rem;
     }
+
+    @media (max-width: 1200px) {
+        h1 {
+            font-size: 2.6rem;
+        }
+        p {
+            font-size: 1.8rem;
+        }
+    }
+    @media (max-width: 1000px) {
+        h1 {
+            font-size: 2.4rem;
+        }
+        p {
+            font-size: 1.6rem;
+        }
+    }
+
+    @media (max-width: 800px) {
+        h1 {
+            font-size: 2.2rem;
+        }
+        p {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    }
 </style>

@@ -2,28 +2,7 @@
 
 A tiny TypeScript library for dynamically loading and managing PCI (Portable Custom Interaction) runtimes in modern web applications. It provides a scoped loader and registry for PCI modules, supporting AMD and SystemJS formats.
 
-<!-- vscode-markdown-toc -->
-
-- [Features](#features)
-- [Main Components](#main-components)
-- [Installation](#installation)
-- [Example Usage](#example-usage)
-- [Definition](#definition)
-- [API Reference](#api-reference)
-    - [PCILoader](#pciloader)
-    - [PCIRegistry](#pciregistry)
-    - [AMDLoader](#amdloader)
-- [Scripts](#scripts)
-- [Changes](#changes)
-- [License](#license)
-
-<!-- vscode-markdown-toc-config
-	numbering=false
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-
-## <a name='features'></a>Features
+## Features
 
 - **Dynamic PCI loading**: Load PCI runtimes at runtime from URLs.
 - **Scoped registry**: Each loader instance manages its own PCI registry.
@@ -31,19 +10,19 @@ A tiny TypeScript library for dynamically loading and managing PCI (Portable Cus
 - **Custom interaction context**: Exposes only the `qtiCustomInteractionContext` resource to loaded PCIs.
 - **TypeScript support**: Fully typed API for safe integration.
 
-## <a name='main-components'></a>Main Components
+## Main Components
 
 - **PCILoader**: Loads a PCI's runtime and manages its registration and instantiation.
 - **PCIRegistry**: Registers and retrieves PCI runtimes, and creates PCI instances.
 - **AMDLoader**: Handles AMD module loading using SystemJS.
 
-## <a name='installation'></a>Installation
+## Installation
 
 ```sh
 npm install pci-loader
 ```
 
-## <a name='example-usage'></a>Example Usage
+## Example Usage
 
 ```typescript
 import { PCILoader } from 'pci-loader';
@@ -65,7 +44,7 @@ loader
     });
 ```
 
-## <a name='definition'></a>Definition
+## Definition
 
 **PCI** stands for **P**ortable **C**ustom **I**nteraction. This is a specification from [1EdTech](https://www.imsglobal.org/assessment/interactions.html) (previously “IMS Global”).
 
@@ -94,9 +73,9 @@ define('my/PCI/runtime', ['qtiCustomInteractionContext'], function (qtiCustomInt
 });
 ```
 
-## <a name='api-reference'></a>API Reference
+## API Reference
 
-### <a name='pciloader'></a>PCILoader
+### PCILoader
 
 Loads a PCI's runtime in a scoped manner and manages its registration and instantiation.
 
@@ -387,7 +366,7 @@ loader
 
 ---
 
-### <a name='pciregistry'></a>PCIRegistry
+### PCIRegistry
 
 A registry for managing and retrieving PCI (Portable Custom Interaction) runtimes.
 
@@ -568,7 +547,7 @@ registry.getInstance(typeIdentifier, container, config, state);
 
 ---
 
-### <a name='amdloader'></a>AMDLoader
+### AMDLoader
 
 A utility for loading AMD modules and defining resources in a scoped context using [SystemJS](https://github.com/systemjs/systemjs).
 
@@ -714,7 +693,7 @@ loader
 
 ---
 
-## <a name='scripts'></a>Scripts
+## Scripts
 
 - `dev`: Start development server with Vite
 - `build`: Build the library
@@ -723,10 +702,10 @@ loader
 
 ---
 
-## <a name='changes'></a>Changes
+## Changes
 
 For the changelog, see [CHANGELOG.md](CHANGELOG.md).
 
-## <a name='license'></a>License
+## License
 
 Distributed under the [MIT License](./LICENSE).

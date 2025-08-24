@@ -3,7 +3,7 @@ import type { components, router } from 'demo/types.d.ts';
 /**
  * Base URL for the application
  */
-export const baseUrl: string = '/';
+export const baseUrl: string = __BASE_URL__;
 
 /**
  * List of samples for the demo application

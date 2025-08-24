@@ -6,6 +6,8 @@ import dts from 'vite-plugin-dts';
 import type { ViteUserConfig } from 'vitest/config';
 import packageInfo from './package.json';
 
+const baseUrl = `${process.env.BASE_URL || ''}/`.replace(/\/+/g, '/');
+
 const markdownSuffixes = ['.md', 'LICENSE'];
 const isMarkdownFile = (id: string): boolean => markdownSuffixes.some(suffix => id.endsWith(suffix));
 
@@ -14,9 +16,17 @@ const externalDependencies = [
     ...Object.keys(packageInfo.peerDependencies || {})
 ];
 
+// Global constants injected by Vite's define
+const define: Record<string, string> = {
+    __BASE_URL__: JSON.stringify(baseUrl)
+};
+
+// Common esbuild options
 const esbuild: ESBuildOptions = {
     legalComments: 'inline'
 };
+
+// Common plugins
 const plugins: PluginOption[] = [
     svelte(),
     dts({
@@ -36,6 +46,8 @@ const plugins: PluginOption[] = [
         }
     }
 ];
+
+// Project aliases
 const alias: AliasOptions = {
     src: resolve(__dirname, 'src/'),
     lib: resolve(__dirname, 'src/lib'),
@@ -46,6 +58,7 @@ const alias: AliasOptions = {
 
 // Library build config
 export const libConfig: ViteUserConfig = {
+    define,
     build: {
         outDir: resolve(__dirname, 'dist'),
         emptyOutDir: true,
@@ -93,7 +106,8 @@ export const libConfig: ViteUserConfig = {
 
 // Demo app config
 export const staticConfig: UserConfig = {
-    // base: './',
+    base: baseUrl,
+    define,
     build: {
         outDir: resolve(__dirname, 'static'),
         emptyOutDir: true,

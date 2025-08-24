@@ -1,7 +1,6 @@
 {
     "name": "pci-loader",
-    "private": true,
-    "version": "0.0.0",
+    "version": "1.0.0",
     "license": "MIT",
     "displayName": "PCI Loader",
     "description": "A scoped PCI Loader for modern web applications.",

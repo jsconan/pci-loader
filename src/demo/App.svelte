@@ -1,9 +1,11 @@
 <script lang="ts">
-    import { isActiveLink, Router } from 'sv-router';
-    import { p } from './router';
-
+    import { mainMenu } from 'demo/config.ts';
+    import { p } from 'demo/router.ts';
+    import type { router } from 'demo/types.d.ts';
     import packageInfo from 'root/package.json';
-    const repositoryUrl = packageInfo.bugs.url.slice(0, -7);
+    import { isActiveLink, Router } from 'sv-router';
+
+    const repositoryUrl = packageInfo.repository.url.replace(/((^git\+)|(\.git$))/g, '');
 </script>
 
 <main>
@@ -15,9 +17,9 @@
                 <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
             </svg>
             <menu>
-                <a href={p('/')} use:isActiveLink>Overview</a>
-                <a href={p('/demo')} use:isActiveLink>Demo</a>
-                <a href={p('/license')} use:isActiveLink>License</a>
+                {#each mainMenu as item}
+                    <a href={(p as router.Navigate)(item.url, item.params)} use:isActiveLink>{item.label}</a>
+                {/each}
             </menu>
             <svg viewBox="0 0 2 3" aria-hidden="true">
                 <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />

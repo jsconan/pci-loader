@@ -1,4 +1,4 @@
-import type { components } from 'demo/types.d.ts';
+import type { components, router } from 'demo/types.d.ts';
 
 /**
  * Base URL for the application
@@ -61,3 +61,47 @@ export const samples: Record<string, components.Sample> = {
         label: 'Error example.'
     }
 };
+
+/**
+ * Main menu for the application
+ */
+export const mainMenu: router.RouteEntry[] = [
+    {
+        url: `${baseUrl}`,
+        label: 'Overview'
+    },
+    {
+        url: `${baseUrl}demo`,
+        label: 'Demo'
+    },
+    {
+        url: `${baseUrl}license`,
+        label: 'License'
+    }
+];
+
+/**
+ * Routes for the application
+ */
+export const routes: router.Route[] = [
+    {
+        url: `${baseUrl}`,
+        page: 'overview'
+    },
+    {
+        url: `${baseUrl}overview`,
+        page: 'overview'
+    },
+    {
+        url: `${baseUrl}demo`,
+        page: 'demo'
+    },
+    {
+        url: `${baseUrl}changelog.md`,
+        page: 'changelog'
+    },
+    {
+        url: `${baseUrl}license`,
+        page: 'license'
+    }
+];

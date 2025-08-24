@@ -90,4 +90,11 @@
         left: unset;
         right: 0;
     }
+
+    @media (pointer: coarse) {
+        div button {
+            left: unset;
+            right: 0;
+        }
+    }
 </style>

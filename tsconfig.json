@@ -1,0 +1,51 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
+        "skipLibCheck": true,
+
+        "allowJs": true,
+        "checkJs": false,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "baseUrl": "./",
+        "paths": {
+            "src/*": ["src/*"],
+            "lib/*": ["src/lib/*"],
+            "demo/*": ["src/demo/*"],
+            "tests/*": ["tests/*"],
+            "root": ["./*"]
+        },
+
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "verbatimModuleSyntax": true,
+        "moduleDetection": "force",
+        "noEmit": true,
+
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "erasableSyntaxOnly": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedSideEffectImports": true,
+        "noImplicitReturns": true
+    },
+    "include": [
+        "vite.config.*.ts",
+        "./src/**/*.d.ts",
+        "./src/**/*.js",
+        "./src/**/*.ts",
+        "./src/**/*.svelte",
+        "./tests/**/*.js",
+        "./tests/**/*.ts",
+        "./tests/**/*.svelte"
+    ],
+    "exclude": ["./node_modules/**"]
+}

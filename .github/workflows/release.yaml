@@ -1,0 +1,58 @@
+name: Release
+
+on:
+    pull_request:
+        branches: [main]
+
+permissions:
+    contents: write
+    pull-requests: write
+    checks: read
+
+jobs:
+    merge_pull_request:
+        if: startsWith(github.head_ref, 'release/')
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v5
+              with:
+                  ref: main
+                  fetch-depth: 0
+                  fetch-tags: true
+
+            - name: Configure git
+              run: |
+                  git config user.name "github-actions"
+                  git config user.email "github-actions@github.com"
+
+            - name: Automerge Pull Request
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
+              run: gh pr merge --merge --admin --delete-branch "${{ env.PULL_REQUEST_NUMBER }}"
+
+            - name: Create and push tag on main
+              env:
+                  PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+              run: |
+                  git fetch --all
+                  git fetch --tags
+                  git checkout main
+                  git pull
+                  git tag "${{ env.PULL_REQUEST_TITLE }}"
+                  git push origin "${{ env.PULL_REQUEST_TITLE }}"
+
+            - name: Create GitHub Release
+              uses: actions/create-release@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+                  PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
+              with:
+                  tag_name: ${{ env.PULL_REQUEST_TITLE }}
+                  release_name: ${{ env.PULL_REQUEST_TITLE }}
+                  body: ${{ env.PULL_REQUEST_BODY }}
+                  draft: false
+                  prerelease: false

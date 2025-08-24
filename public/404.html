@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Page Not Found</title>
+        <style>
+            :root {
+                --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+                --font-size: 14px;
+                --font-weight: 400;
+                --line-height: 1.5;
+
+                --background: #efe8e4;
+                --text-color: #213547;
+                --text-color-muted: #888;
+
+                --link-color: #424cff;
+                --link-hover-color: #101bf2;
+                --link-focus: #646cff;
+
+                font-family: var(--font-family);
+                line-height: var(--line-height);
+                font-weight: var(--font-weight);
+
+                color-scheme: light dark;
+                color: var(--text-color);
+                background-color: var(--background);
+
+                font-synthesis: none;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --background: #242424;
+                    --text-color: rgba(255, 255, 255, 0.87);
+                    --text-color-muted: #888;
+
+                    --link-color: #868cff;
+                    --link-hover-color: #757bf2;
+                    --link-focus: #646cff;
+                }
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            a {
+                appearance: none;
+                position: relative;
+                font-weight: 500;
+                outline: none;
+                color: var(--link-color);
+                text-decoration: inherit;
+            }
+            a:hover {
+                color: var(--link-hover-color);
+            }
+            a:focus::after,
+            a:focus-visible::after {
+                content: '';
+                position: absolute;
+                top: -4px;
+                left: -6px;
+                right: -6px;
+                bottom: -4px;
+                border: 2px solid var(--link-focus);
+                border-radius: var(--link-border-radius, 4px);
+            }
+        </style>
+        <script>
+            // Redirect all 404s to the homepage, preserving the path
+            var path = window.location.pathname + window.location.search + window.location.hash;
+            window.localStorage.setItem('redirectPath', path);
+            window.location.replace('__BASE_URL__');
+        </script>
+    </head>
+    <body>
+        <h1>404 - Not Found</h1>
+        <p>The page you are looking for does not exist.</p>
+        <p>Redirecting you to the <a href="__BASE_URL__" title="Homepage">homepage...</a></p>
+    </body>
+</html>

@@ -1,10 +1,8 @@
 <script lang="ts">
     import { mainMenu } from 'demo/config.ts';
     import { p } from 'demo/router.ts';
-    import packageInfo from 'root/package.json';
     import { isActiveLink, Router } from 'sv-router';
-
-    const repositoryUrl = packageInfo.repository.url.replace(/((^git\+)|(\.git$))/g, '');
+    import GitHubLink from './components/GitHubLink.svelte';
 </script>
 
 <main>
@@ -25,9 +23,7 @@
             </svg>
         </nav>
 
-        <menu>
-            <a href={repositoryUrl} target="_blank" class="github" title="GitHub Repository">GitHub</a>
-        </menu>
+        <GitHubLink />
     </header>
 
     <Router />
@@ -122,23 +118,5 @@
     .logo {
         display: inline-block;
         width: 108px;
-    }
-    .github {
-        padding: 0.6em 1.2em 0.6em 3.2em;
-    }
-    .github::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0.8em;
-        transform: translateY(-50%);
-        width: 1.6em;
-        height: 1.6em;
-        background: url('/github-black.svg') no-repeat center/contain;
-    }
-    @media (prefers-color-scheme: dark) {
-        .github::before {
-            background: url('/github-white.svg') no-repeat center/contain;
-        }
     }
 </style>

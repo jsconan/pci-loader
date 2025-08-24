@@ -41,7 +41,7 @@
         padding: 0.6em 1.2em;
         line-height: 1.1;
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 2rem;
         font-family: inherit;
         outline: none;
         border: none;
@@ -73,5 +73,28 @@
     button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+    }
+
+    @media (max-width: 1200px) {
+        button {
+            font-size: 1.8rem;
+        }
+    }
+    @media (max-width: 1000px) {
+        button {
+            font-size: 1.6rem;
+        }
+    }
+
+    @media (max-width: 800px) {
+        button {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (max-width: 600px) {
+        button {
+            font-size: 1.2rem;
+        }
     }
 </style>

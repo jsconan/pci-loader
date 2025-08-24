@@ -44,7 +44,7 @@
         align-items: center;
         padding: 0 2rem;
         font-weight: 700;
-        font-size: 1.6rem;
+        font-size: 2rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         text-decoration: none;

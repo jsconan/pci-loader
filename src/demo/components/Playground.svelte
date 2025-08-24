@@ -207,9 +207,7 @@
             <Dropdown items={samplesList} bind:value={selectedSample} disabled={false} onselect={reset} />
         </menu>
         <menu>
-            <Button onclick={load} disabled={states.loading}>
-                Load {samples[selectedSample].label}
-            </Button>
+            <Button onclick={load} disabled={states.loading}>Load</Button>
             {#if samples[selectedSample].type == 'pci'}
                 <Button onclick={renderPCI} disabled={states.rendered}>Render</Button>
                 <Button onclick={destroyPCI} disabled={!states.rendered}>Destroy</Button>

@@ -5,13 +5,13 @@ on:
 
     workflow_dispatch:
 
+permissions:
+    contents: read
+    pull-requests: write
+    statuses: write
+
 jobs:
     code-test:
-        permissions:
-            contents: read
-            pull-requests: write
-            statuses: write
-
         runs-on: ubuntu-latest
 
         strategy:

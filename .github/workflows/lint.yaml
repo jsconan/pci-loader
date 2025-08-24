@@ -5,14 +5,14 @@ on:
 
     workflow_dispatch:
 
+permissions:
+    contents: read
+    packages: read
+    pull-requests: read
+    checks: write
+
 jobs:
     code-lint:
-        permissions:
-            contents: read
-            packages: read
-            pull-requests: read
-            checks: write
-
         runs-on: ubuntu-latest
 
         steps:

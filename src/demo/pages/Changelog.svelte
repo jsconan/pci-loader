@@ -1,10 +1,6 @@
 <script lang="ts">
-    import SvelteMarkdown from '@humanspeak/svelte-markdown';
-
+    import Markdown from 'demo/components/Markdown.svelte';
     import source from 'root/CHANGELOG.md';
 </script>
 
-<SvelteMarkdown {source} />
-
-<style>
-</style>
+<Markdown {source} />

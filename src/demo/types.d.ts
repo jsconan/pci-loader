@@ -1,6 +1,8 @@
-declare namespace components {
+export declare namespace components {
+    type SampleType = 'pci' | 'amd';
+
     export type Sample = {
-        type: 'pci' | 'amd';
+        type: SampleType;
         url: string;
         description: string;
         dependencies?: Dependency[];

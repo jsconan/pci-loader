@@ -5,6 +5,7 @@
     import Dropdown from 'demo/components/Dropdown.svelte';
     import Tab from 'demo/components/Tab.svelte';
     import TabBar from 'demo/components/TabBar.svelte';
+    import type { components } from 'demo/types.d.ts';
     import {
         codeDefineAMDDependencies,
         codeDefineAMDModule,

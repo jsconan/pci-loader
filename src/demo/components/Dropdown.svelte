@@ -1,4 +1,6 @@
 <script lang="ts">
+    import type { components } from 'demo/types.d.ts';
+
     interface Props {
         items: components.DropdownItem[];
         value?: string;

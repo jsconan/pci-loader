@@ -1,6 +1,6 @@
 <script lang="ts">
     import SvelteMarkdown, { defaultRenderers } from '@humanspeak/svelte-markdown';
-    import MarkdownCode from './MarkdownCode.svelte';
+    import MarkdownCode from 'demo/components/MarkdownCode.svelte';
 
     interface Props {
         source: string;

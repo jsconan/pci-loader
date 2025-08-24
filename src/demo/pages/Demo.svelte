@@ -1,5 +1,6 @@
 <script lang="ts">
     import Playground from 'demo/components/Playground.svelte';
+    import type { components } from 'demo/types.d.ts';
 
     const samples: Record<string, components.Sample> = {
         pci: {

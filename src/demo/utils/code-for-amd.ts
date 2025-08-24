@@ -1,3 +1,5 @@
+import type { components } from 'demo/types.d.ts';
+
 export function codeImportAMDLoader(): string {
     return `// Import the AMDLoader from the 'pci-loader' package
 import { AMDLoader } from 'pci-loader';

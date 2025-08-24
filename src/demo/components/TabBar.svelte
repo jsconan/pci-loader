@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { components } from 'demo/types.d.ts';
     import type { Snippet } from 'svelte';
 
     interface Props {

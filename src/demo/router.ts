@@ -20,5 +20,15 @@ const routeMap = routes.reduce((acc: router.RouteMap, route: router.Route) => {
 
 export const { p, navigate, isActive, route }: router.RouterExports = createRouter({
     ...routeMap,
-    '*': NotFound
+    '*': NotFound,
+    hooks: {
+        async afterLoad() {
+            // Manage redirection from external 404 page (public/404.html)
+            const path = window.localStorage.getItem('redirectPath');
+            window.localStorage.removeItem('redirectPath');
+            if (path) {
+                navigate(`/${path}`.replace(/\/+/g, '/'));
+            }
+        }
+    }
 }) as unknown as router.RouterExports;

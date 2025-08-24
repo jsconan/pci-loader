@@ -43,7 +43,7 @@
     let selectedSample: string = $state('pci');
     let samplesList: components.DropdownItem[] = Object.keys(samples).map(key => ({
         value: key,
-        label: samples[key].description
+        label: samples[key].label
     }));
 
     let amdLoader: AMDLoader | null = null;
@@ -208,7 +208,7 @@
         </menu>
         <menu>
             <Button onclick={load} disabled={states.loading}>
-                Load {samples[selectedSample].description}
+                Load {samples[selectedSample].label}
             </Button>
             {#if samples[selectedSample].type == 'pci'}
                 <Button onclick={renderPCI} disabled={states.rendered}>Render</Button>

@@ -4,7 +4,7 @@ export declare namespace components {
     export type Sample = {
         type: SampleType;
         url: string;
-        description: string;
+        label: string;
         dependencies?: Dependency[];
     };
 

@@ -1,16 +1,16 @@
 <script lang="ts">
+    import GitHubLink from 'demo/components/GitHubLink.svelte';
+    import Menu from 'demo/components/Menu.svelte';
     import { Router } from 'sv-router';
-    import GitHubLink from './components/GitHubLink.svelte';
-    import Menu from './components/Menu.svelte';
 </script>
 
 <main>
     <header>
-        <span class="logo"></span>
+        <div class="corner left"><GitHubLink /></div>
 
         <Menu />
 
-        <GitHubLink />
+        <div class="corner right"><GitHubLink /></div>
     </header>
 
     <Router />
@@ -33,8 +33,11 @@
         margin-bottom: 2rem;
     }
 
-    .logo {
-        display: inline-block;
-        width: 108px;
+    .corner {
+        padding: 0;
+        margin: 0;
+    }
+    .corner.left {
+        visibility: hidden;
     }
 </style>

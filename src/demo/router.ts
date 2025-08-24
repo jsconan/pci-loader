@@ -18,7 +18,7 @@ const routeMap = routes.reduce((acc: router.RouteMap, route: router.Route) => {
     return acc;
 }, {} as router.RouteMap);
 
-export const { p, navigate, isActive, route } = createRouter({
+export const { p, navigate, isActive, route }: router.RouterExports = createRouter({
     ...routeMap,
     '*': NotFound
-});
+}) as unknown as router.RouterExports;

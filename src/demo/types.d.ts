@@ -39,4 +39,19 @@ export declare namespace router {
     export type RouteMap = Record<string, Component>;
 
     export type Navigate = (url: string, params?: Record<string, unknown>) => string;
+    export type isActive = (url: string) => boolean;
+    export type RouterExports = {
+        p: Navigate;
+        navigate: Navigate;
+        isActive: isActive;
+        route: {
+            params: AllParams<T>;
+            getParams<U extends Path<T>>(pathname: U): Record<ExtractParams<U>, string>;
+            pathname: (Path<T, true> & {}) | (string & {});
+            search: string;
+            state: unknown;
+            hash: string;
+            meta: RouteMeta;
+        };
+    };
 }

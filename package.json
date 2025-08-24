@@ -6,7 +6,7 @@
     "displayName": "PCI Loader",
     "description": "A scoped PCI Loader for modern web applications.",
     "author": "Jean-Sébastien CONAN",
-    "homepage": "https://github.com/jsconan/pci-loader?tab=readme-ov-file",
+    "homepage": "https://jsconan.github.io/pci-loader/",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/jsconan/pci-loader.git"

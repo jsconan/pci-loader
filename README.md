@@ -1,12 +1,6 @@
 # PCI Loader
 
-> A scoped PCI Loader for modern web applications.
-
-**PCI Loader** is a tiny TypeScript library for dynamically loading and managing PCI (Portable Custom Interaction) runtimes in modern web applications. It provides a scoped loader and registry for PCI modules, supporting AMD and SystemJS formats.
-
-**PCI** stands for **P**ortable **C**ustom **I**nteraction. This is a specification from [1EdTech](https://www.imsglobal.org/assessment/interactions.html) (previously “IMS Global”).
-
-> **Portable Custom Interaction (PCI) defines a standard way for technology-enhanced items (TEIs) or custom interaction types** to be represented as part of the Question and Test Interoperability® (QTI®) and Accessible Portable Item Protocol® (APIP®) specifications.
+A tiny TypeScript library for dynamically loading and managing PCI (Portable Custom Interaction) runtimes in modern web applications. It provides a scoped loader and registry for PCI modules, supporting AMD and SystemJS formats.
 
 <!-- vscode-markdown-toc -->
 
@@ -14,17 +8,11 @@
 - [Main Components](#main-components)
 - [Installation](#installation)
 - [Example Usage](#example-usage)
+- [Definition](#definition)
 - [API Reference](#api-reference)
     - [PCILoader](#pciloader)
-        - [Constructor](#constructor)
-        - [Properties](#properties)
-        - [Methods](#methods)
     - [PCIRegistry](#pciregistry)
-        - [Constructor](#constructor-1)
-        - [Methods](#methods-1)
     - [AMDLoader](#amdloader)
-        - [Constructor](#constructor-2)
-        - [Methods](#methods-2)
 - [Scripts](#scripts)
 - [Changes](#changes)
 - [License](#license)
@@ -76,6 +64,12 @@ loader
         console.error('Error loading or rendering PCI:', err);
     });
 ```
+
+## <a name='definition'></a>Definition
+
+**PCI** stands for **P**ortable **C**ustom **I**nteraction. This is a specification from [1EdTech](https://www.imsglobal.org/assessment/interactions.html) (previously “IMS Global”).
+
+> **Portable Custom Interaction (PCI) defines a standard way for technology-enhanced items (TEIs) or custom interaction types** to be represented as part of the Question and Test Interoperability® (QTI®) and Accessible Portable Item Protocol® (APIP®) specifications.
 
 PCI runtimes should be defined following the [AMD API Specification](https://github.com/amdjs/amdjs-api/blob/master/AMD.md). Here is a simple example:
 
@@ -168,7 +162,7 @@ loader
     });
 ```
 
-#### <a name='constructor'></a>Constructor
+**Constructor**
 
 ```typescript
 new PCILoader(url: string, name?: string);
@@ -179,16 +173,16 @@ _Parameters:_
 - `url: string` - The URL of the PCI's runtime script.
 - `name: string` - The name of the PCI (optional). If the name is provided, it must match the `typeIdentifier` of the PCI's runtime. Otherwise it will be extracted from the PCI's runtime itself.
 
-#### <a name='properties'></a>Properties
+**Properties**
 
 - `name: string`
   The name of the PCI. If not provided at construction, it will be extracted from the PCI's runtime itself. The value may be undefined if the PCI's runtime is not yet loaded.
 - `url: string`
   The URL of the PCI's runtime.
 
-#### <a name='methods'></a>Methods
+**Methods**
 
-##### `PCILoader.load()`
+_`PCILoader.load()`_
 
 ```typescript
 loader.load(
@@ -205,7 +199,7 @@ The necessary dependencies are automatically loaded and made available to the PC
 _Parameters:_
 
 - `options: object` - Options for loading the PCI's runtime.
-- `options.timeout: number` - The maximum time to wait for the PCI's runtime to load (default is 30000 ms).
+    - `.timeout: number` - The maximum time to wait for the PCI's runtime to load (default is 30000 ms).
 
 _Returns:_
 
@@ -226,7 +220,7 @@ Create a new `PCILoader` instance for a particular PCI, specifying the name, whi
 ```typescript
 import { PCILoader } from 'pci-loader';
 
-const loader = new PCILoader('/path/to/myPCI/runtime.js', 'myPCI);
+const loader = new PCILoader('/path/to/myPCI/runtime.js', 'myPCI');
 ```
 
 From the created `PCILoader`, we can now load the PCI's runtime, and possibly get an instance from it.
@@ -296,7 +290,7 @@ loader
     });
 ```
 
-##### `PCILoader.getInstance()`
+_`PCILoader.getInstance()`_
 
 ```typescript
 loader.getInstance(
@@ -314,18 +308,19 @@ _Parameters:_
 
 - `container: Element` - The DOM element where to render the PCI. Be sure to have the container prefilled with the layout expected by the PCI's runtime.
 - `configuration: PCI.Config` - The configuration needed by the PCI to properly instantiate.
-- `configuration.properties: Record<string, unknown>` - Properties to be passed to the PCI, a list of key-value pairs.
-- `configuration.templateVariables: Record<string, PCI.Response>` - An object containing the templates variables as referenced in the PCI.
-- `configuration.boundTo: { [key: string]: PCI.Response }` - An object representing the response for this QTI interaction. Usually, it starts empty and would be the response returned by the previous execution of the PCI when the item is revisited.
-- `configuration.onready: (interaction: PCI.Interaction, state: PCI.State) => void` - A callback function the PCI must call once it is fully created and ready to operate. The instance of the PCI and the initial state must be supplied as parameters.
+    - `.properties: Record<string, unknown>` - Properties to be passed to the PCI, a list of key-value pairs.
+    - `.templateVariables: Record<string, PCI.Response>` - An object containing the templates variables as referenced in the PCI.
+    - `.boundTo: { [key: string]: PCI.Response }` - An object representing the response for this QTI interaction. Usually, it starts empty and would be the response returned by the previous execution of the PCI when the item is revisited.
+    - `.onready: (interaction: PCI.Interaction, state: PCI.State) => void` - A callback function the PCI must call once it is fully created and ready to operate. The instance of the PCI and the initial state must be supplied as parameters.
 
-    **Note:** `PCILoader` automatically creates this callback. The consumer does not have to provide one, unless it needs to.
+        **Note:** `PCILoader` automatically creates this callback. The consumer does not have to provide one, unless it needs to.
 
-- `configuration.ondone: (interaction: PCI.Interaction, response: PCI.Response, state: State, status: string) => void` - An optional callback function the PCI **may** call to terminate the attempt. If the host supports it, it may supply this callback in order for the PCI to explicitly terminate the attempt, in the same way it is made using the standard endAttempt interaction.
-- `configuration.status: string` - An optional value that specifies the item's status. If not specified, it should default to `interacting`.
+    - `.ondone: (interaction: PCI.Interaction, response: PCI.Response, state: State, status: string) => void` - An optional callback function the PCI **may** call to terminate the attempt. If the host supports it, it may supply this callback in order for the PCI to explicitly terminate the attempt, in the same way it is made using the standard endAttempt interaction.
+    - `.status: string` - An optional value that specifies the item's status. If not specified, it should default to `interacting`.
+
 - `state: PCI.State`: - An object representing the initial state of the PCI. This is useful when rendering an new instance of a previously terminated PCI.
 - `options: object` - Options for loading the PCI's runtime and rendering it.
-- `options.timeout: number` - The maximum time to wait for the PCI's runtime to load and render (default is 30000 ms).
+    - `.timeout: number` - The maximum time to wait for the PCI's runtime to load and render (default is 30000 ms).
 
 _Returns:_
 
@@ -449,15 +444,15 @@ const state = {};
 registry.getInstance(typeIdentifier, container, config, state);
 ```
 
-#### <a name='constructor-1'></a>Constructor
+**Constructor**
 
 ```typescript
 new PCIRegistry();
 ```
 
-#### <a name='methods-1'></a>Methods
+**Methods**
 
-##### `PCIRegistry.register()`
+_`PCIRegistry.register()`_
 
 ```typescript
 registry.register(
@@ -472,8 +467,8 @@ A runtime is represented by an object containing a unique typeIdentifier and a g
 _Parameters:_
 
 - `interaction: PCI.Registration` - The PCI's runtime to register.
-- `interaction.typeIdentifier` - The unique identifier for the PCI's runtime.
-- `interaction.getInstance` - A function that renders the PCI into a DOM element and calls the `onready` callback provided through the configuration parameter.
+    - `.typeIdentifier` - The unique identifier for the PCI's runtime.
+    - `.getInstance` - A function that renders the PCI into a DOM element and calls the `onready` callback provided through the configuration parameter.
 
 _Throws:_
 
@@ -503,7 +498,7 @@ registry.register({
 });
 ```
 
-##### `PCIRegistry.getInstance()`
+_`PCIRegistry.getInstance()`_
 
 ```typescript
 registry.getInstance(
@@ -521,12 +516,12 @@ _Parameters:_
 - `typeIdentifier: string` - The type identifier of the PCI.
 - `container: Element` - The DOM element where to render the PCI. Be sure to have the container prefilled with the layout expected by the PCI's runtime.
 - `configuration: PCI.Config` - The configuration needed by the PCI to properly instantiate.
-- `configuration.properties: Record<string, unknown>` - Properties to be passed to the PCI, a list of key-value pairs.
-- `configuration.templateVariables: Record<string, PCI.Response>` - An object containing the templates variables as referenced in the PCI.
-- `configuration.boundTo: { [key: string]: PCI.Response }` - An object representing the response for this QTI interaction. Usually, it starts empty and would be the response returned by the previous execution of the PCI when the item is revisited.
-- `configuration.onready: (interaction: PCI.Interaction, state: PCI.State) => void` - A **mandatory** callback function the PCI must call once it is fully created and ready to operate. The instance of the PCI and the initial state must be supplied as parameters.
-- `configuration.ondone: (interaction: PCI.Interaction, response: PCI.Response, state: State, status: string) => void` - An optional callback function the PCI **may** call to terminate the attempt. If the host supports it, it may supply this callback in order for the PCI to explicitly terminate the attempt, in the same way it is made using the standard endAttempt interaction.
-- `configuration.status: string` - An optional value that specifies the item's status. If not specified, it should default to `interacting`.
+    - `.properties: Record<string, unknown>` - Properties to be passed to the PCI, a list of key-value pairs.
+    - `.templateVariables: Record<string, PCI.Response>` - An object containing the templates variables as referenced in the PCI.
+    - `.boundTo: { [key: string]: PCI.Response }` - An object representing the response for this QTI interaction. Usually, it starts empty and would be the response returned by the previous execution of the PCI when the item is revisited.
+    - `.onready: (interaction: PCI.Interaction, state: PCI.State) => void` - A **mandatory** callback function the PCI must call once it is fully created and ready to operate. The instance of the PCI and the initial state must be supplied as parameters.
+    - `.ondone: (interaction: PCI.Interaction, response: PCI.Response, state: State, status: string) => void` - An optional callback function the PCI **may** call to terminate the attempt. If the host supports it, it may supply this callback in order for the PCI to explicitly terminate the attempt, in the same way it is made using the standard endAttempt interaction.
+    - `.status: string` - An optional value that specifies the item's status. If not specified, it should default to `interacting`.
 - `state: PCI.State`: - An object representing the initial state of the PCI. This is useful when rendering an new instance of a previously terminated PCI.
 
 _Throws:_
@@ -540,7 +535,7 @@ import { PCIRegistry } from 'pci-loader';
 const registry = new PCIRegistry();
 
 // Register a PCI's runtime
-registry.register({ ... });
+registry.register({ typeIdentifier, getInstance(container, config, state) {} });
 
 // Prepare the container and config for rendering the PCI
 // Be sure to have the container prefilled with the layout expected by the PCI's runtime
@@ -622,15 +617,15 @@ loader
     });
 ```
 
-#### <a name='constructor-2'></a>Constructor
+**Constructor**
 
 ```typescript
 new AMDLoader();
 ```
 
-#### <a name='methods-2'></a>Methods
+**Methods**
 
-##### `AMDLoader.define()`
+_`AMDLoader.define()`_
 
 ```typescript
 loader.define(
@@ -661,7 +656,7 @@ loader.define('myResource', {
 loader.define('myResource', 'path/to/resource');
 ```
 
-##### `AMDLoader.load()`
+_`AMDLoader.load()`_
 
 ```typescript
 loader.load(

@@ -1,8 +1,10 @@
-declare namespace components {
+export declare namespace components {
+    type SampleType = 'pci' | 'amd';
+
     export type Sample = {
-        type: 'pci' | 'amd';
+        type: SampleType;
         url: string;
-        description: string;
+        label: string;
         dependencies?: Dependency[];
     };
 
@@ -20,4 +22,21 @@ declare namespace components {
         key: string;
         label: string;
     };
+}
+
+export declare namespace router {
+    export type Route = {
+        url: string;
+        page: string;
+    };
+
+    export type RouteEntry = {
+        label: string;
+        url: string;
+        params?: Record<string, unknown>;
+    };
+
+    export type RouteMap = Record<string, Component>;
+
+    export type Navigate = (url: string, params?: Record<string, unknown>) => string;
 }

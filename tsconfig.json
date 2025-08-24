@@ -17,7 +17,8 @@
             "src/*": ["src/*"],
             "lib/*": ["src/lib/*"],
             "demo/*": ["src/demo/*"],
-            "tests/*": ["tests/*"]
+            "tests/*": ["tests/*"],
+            "root": ["./*"]
         },
 
         /* Bundler mode */
@@ -37,7 +38,7 @@
         "noImplicitReturns": true
     },
     "include": [
-        "./vite.config.ts",
+        "vite.config.*.ts",
         "./src/**/*.d.ts",
         "./src/**/*.js",
         "./src/**/*.ts",

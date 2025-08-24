@@ -7,9 +7,10 @@ import * as prettier from 'prettier/standalone';
 /**
  * Prettifies the given code snippet.
  * @param snippet The code snippet to prettify.
+ * @param notify Whether to log errors to the console.
  * @returns The prettified code snippet.
  */
-export async function prettify(snippet: string): Promise<string> {
+export async function prettify(snippet: string, notify: boolean = false): Promise<string> {
     const options: Options = {
         parser: 'typescript',
         plugins: [prettierPluginTypeScript, prettierPluginEstree, prettierPluginHtml],
@@ -29,7 +30,9 @@ export async function prettify(snippet: string): Promise<string> {
             const out = await prettier.format(wrapped, options);
             return out.replace(/^export const snippet = /, '').replace(/;\s*$/, '');
         } catch (error) {
-            console.error('Error formatting code:', error);
+            if (notify) {
+                console.error('Error formatting code:', error);
+            }
 
             // 3) Last resort: leave as-is
             return snippet;

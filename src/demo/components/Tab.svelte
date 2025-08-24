@@ -1,5 +1,13 @@
 <script lang="ts">
-    let { name, active = $bindable(''), children }: { name: string; active: string; children?: any } = $props();
+    import type { Snippet } from 'svelte';
+
+    interface Props {
+        name: string;
+        active: string;
+        children?: Snippet;
+    }
+
+    let { name, active = $bindable(''), children }: Props = $props();
 </script>
 
 <div class={active == name ? 'active' : ''}>

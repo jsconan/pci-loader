@@ -1,22 +1,30 @@
-name: Lint
+name: Deploy documentation to Pages
 
 on:
-    pull_request:
+    push:
+        branches: ['main']
 
     workflow_dispatch:
 
 permissions:
     contents: read
-    packages: read
-    pull-requests: read
-    checks: write
+    pages: write
+    id-token: write
+
+concurrency:
+    group: 'pages'
+    cancel-in-progress: true
 
 jobs:
-    code-lint:
+    github-pages:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout repository
+            - name: Checkout
               uses: actions/checkout@v5
 
             - name: Setup Node.js
@@ -48,19 +56,17 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
-            - name: Lint code
-              run: npm run lint
+            - name: Build
+              run: BASE_URL="/pci-loader" npm run build
 
-            - name: Build project
-              run: npm run build
+            - name: Setup Pages
+              uses: actions/configure-pages@v5
 
-            - name: Save code linting report
-              run: npm run lint:report
-              continue-on-error: true
-
-            # See https://github.com/ataylorme/eslint-annotate-action
-            - name: Annotate code linting results
-              uses: ataylorme/eslint-annotate-action@v3
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
               with:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  report-json: 'eslint_report.json'
+                  path: './static'
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4

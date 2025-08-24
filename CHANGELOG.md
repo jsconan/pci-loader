@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v1.0.1 [2025-08-25]
+
+### Changed
+
+- Bumps svelte from 5.38.2 to 5.38.3.
+- Make the demo application reactive
+
 ## v1.0.0 [2025-08-24]
 
 ### Added

@@ -16,8 +16,15 @@ export async function prettify(snippet: string, notify: boolean = false): Promis
         plugins: [prettierPluginTypeScript, prettierPluginEstree, prettierPluginHtml],
         printWidth: 80,
         tabWidth: 4,
+        useTabs: false,
+        semi: true,
         singleQuote: true,
-        trailingComma: 'all'
+        quoteProps: 'as-needed',
+        trailingComma: 'none',
+        bracketSpacing: true,
+        arrowParens: 'avoid',
+        endOfLine: 'lf',
+        bracketSameLine: true
     };
 
     try {

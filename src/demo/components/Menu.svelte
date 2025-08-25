@@ -74,9 +74,16 @@
     }
 
     svg {
+        position: relative;
         width: 2em;
         height: 3em;
         display: block;
+    }
+    svg:first-child {
+        left: 1px;
+    }
+    svg:last-child {
+        right: 1px;
     }
 
     path {

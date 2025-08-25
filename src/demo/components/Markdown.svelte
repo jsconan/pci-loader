@@ -1,6 +1,7 @@
 <script lang="ts">
     import SvelteMarkdown, { defaultRenderers } from '@humanspeak/svelte-markdown';
     import MarkdownCode from 'demo/components/MarkdownCode.svelte';
+    import MarkdownCodespan from 'demo/components/MarkdownCodespan.svelte';
 
     interface Props {
         source: string;
@@ -10,7 +11,8 @@
 
     const renderers = {
         ...defaultRenderers,
-        code: MarkdownCode
+        code: MarkdownCode,
+        codespan: MarkdownCodespan
     };
 </script>
 

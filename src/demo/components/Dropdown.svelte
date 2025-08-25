@@ -31,7 +31,7 @@
         max-width: 50ch;
         line-height: 1.1;
         padding: 0;
-        font-size: 2rem;
+        font-size: var(--font-size-button, 2rem);
         font-family: inherit;
         border: 1px solid var(--select-border-color);
         border-radius: var(--select-border-radius, 8px);
@@ -88,14 +88,12 @@
         .select {
             min-width: 25ch;
             max-width: 45ch;
-            font-size: 1.8rem;
         }
     }
     @media (max-width: 1000px) {
         .select {
             min-width: 20ch;
             max-width: 40ch;
-            font-size: 1.6rem;
         }
     }
 
@@ -103,7 +101,6 @@
         .select {
             min-width: 15ch;
             max-width: 35ch;
-            font-size: 1.4rem;
         }
     }
 
@@ -111,7 +108,6 @@
         .select {
             min-width: 10ch;
             max-width: 30ch;
-            font-size: 1.2rem;
         }
     }
 </style>

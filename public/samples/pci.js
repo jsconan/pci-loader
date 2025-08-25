@@ -34,17 +34,16 @@ define('my/PCI/runtime', ['qtiCustomInteractionContext', 'my/hello', 'my/style',
 
             const css = `
             .my-pci {
+                font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+                font-weight: 500;
+                font-size: 16px;
                 background-color: #f0f0f0;
+                color: #404040;
                 border: 1px solid #404040;
                 padding: 20px;
                 border-radius: 5px;
             }
             .my-pci .prompt label {
-                background-color: transparent;
-                color: #404040;
-                font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-                font-weight: 500;
-                font-size: 16px;
                 margin-end: 10px;
             }
             .my-pci .prompt input {
@@ -52,17 +51,13 @@ define('my/PCI/runtime', ['qtiCustomInteractionContext', 'my/hello', 'my/style',
                 color: #404040;
                 border: 1px solid #404040;
                 border-radius: 5px;
-                font-family: monospace, 'courier new', sans-serif;
+                font-family: Monaco, monospace, 'courier new', sans-serif;
                 font-weight: 500;
                 font-size: 16px;
                 margin-end: 10px;
                 padding: 5px;
             }
             .my-pci .response {
-                color: #404040;
-                font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-                font-weight: 500;
-                font-size: 16px;
                 margin-top: 10px;
             }
             `;

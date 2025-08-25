@@ -45,7 +45,7 @@
         align-items: center;
         padding: 0 2rem;
         font-weight: 700;
-        font-size: 2rem;
+        font-size: var(--font-size-button, 2rem);
         text-transform: uppercase;
         letter-spacing: 0.1em;
         text-decoration: none;
@@ -96,28 +96,18 @@
     @media (max-width: 1200px) {
         a {
             font-weight: 700;
-            font-size: 1.8rem;
         }
     }
 
-    @media (max-width: 1000px) {
-        a {
-            font-weight: 700;
-            font-size: 1.6rem;
-        }
-    }
-
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
         a {
             font-weight: 600;
-            font-size: 1.4rem;
         }
     }
 
     @media (max-width: 600px) {
         a {
             font-weight: 500;
-            font-size: 1.2rem;
         }
     }
 </style>

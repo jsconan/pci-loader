@@ -3,11 +3,16 @@
 
 :root {
     --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --font-family-code: monospace, 'courier new', sans-serif;
     --font-size: 2rem;
+    --font-size-code: 1.8rem;
+    --font-size-button: 2rem;
+    --font-size-heading: 2.8rem;
     --font-weight: 400;
     --line-height: 1.5;
 
     --background: #efe8e4;
+    --background-highlight: rgba(0, 0, 0, 0.05);
     --text-color: #213547;
     --text-color-muted: #888;
 
@@ -21,6 +26,7 @@
 
     --code-background: #f9f9f9;
     --code-text: #000;
+    --code-border-radius: 4px;
 
     --button-background: #f9f9f9;
     --button-background-hover: #f0f0f0;
@@ -85,6 +91,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #242424;
+        --background-highlight: rgba(255, 255, 255, 0.05);
         --text-color: rgba(255, 255, 255, 0.87);
         --text-color-muted: #888;
 
@@ -197,20 +204,59 @@ a:focus-visible::after {
     border-radius: var(--link-border-radius, 4px);
 }
 
+pre,
+code {
+    font-size: var(--font-size-code);
+    font-family: var(--font-family-code);
+
+    /* Prevent iOS Safari from resizing text */
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+blockquote {
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    border-left: 4px solid var(--border-color);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    background-color: var(--background-highlight);
+}
+blockquote p {
+    margin: 0;
+}
+
 @media (max-width: 1200px) {
     :root {
         --font-size: 1.8rem;
+        --font-size-code: 1.8rem;
+        --font-size-button: 1.8rem;
+        --font-size-heading: 2.6rem;
+    }
+}
+@media (max-width: 1000px) {
+    :root {
+        --font-size: 1.65rem;
+        --font-size-code: 1.6rem;
+        --font-size-button: 1.6rem;
+        --font-size-heading: 2.4rem;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     :root {
-        --font-size: 1.6rem;
+        --font-size: 1.55rem;
+        --font-size-code: 1.4rem;
+        --font-size-button: 1.4rem;
+        --font-size-heading: 2.2rem;
     }
 }
 
 @media (max-width: 600px) {
     :root {
         --font-size: 1.4rem;
+        --font-size-code: 1.2rem;
+        --font-size-button: 1.2rem;
+        --font-size-heading: 2rem;
     }
 }

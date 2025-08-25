@@ -25,7 +25,7 @@
         background: var(--code-background);
         color: var(--code-text);
         padding: 1em;
-        border-radius: 0.5em;
+        border-radius: var(--code-border-radius);
         overflow: auto;
     }
 </style>

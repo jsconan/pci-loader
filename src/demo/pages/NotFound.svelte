@@ -13,11 +13,11 @@
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: var(--font-size-heading, 2.8rem);
         margin-bottom: 1rem;
     }
 
     p {
-        font-size: 1.25rem;
+        font-size: var(--font-size, 2rem);
     }
 </style>

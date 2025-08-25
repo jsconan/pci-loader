@@ -10,7 +10,7 @@
     </svg>
     <menu>
         {#each mainMenu as item}
-            <a href={p(item.url, item.params)} use:isActiveLink>{item.label}</a>
+            <a href={p(item.url, item.params)} tabindex="0" use:isActiveLink>{item.label}</a>
         {/each}
     </menu>
     <svg viewBox="0 0 2 3" aria-hidden="true">
@@ -26,6 +26,7 @@
 
     menu {
         position: relative;
+        z-index: var(--z-index-controls);
         display: flex;
         justify-content: center;
         margin: 0;
@@ -66,6 +67,7 @@
     a:focus-visible::after {
         content: '';
         position: absolute;
+        z-index: var(--z-index-controls);
         top: -1px;
         left: -1px;
         right: -1px;
@@ -74,9 +76,17 @@
     }
 
     svg {
+        position: relative;
+        z-index: var(--z-index-page);
         width: 2em;
         height: 3em;
         display: block;
+    }
+    svg:first-child {
+        left: 1px;
+    }
+    svg:last-child {
+        right: 1px;
     }
 
     path {

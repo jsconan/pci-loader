@@ -5,7 +5,8 @@
 </script>
 
 <menu>
-    <a href={repositoryUrl} target="_blank" class="github" title="GitHub Repository"><span>GitHub</span></a>
+    <a href={repositoryUrl} tabindex="0" target="_blank" class="github" title="GitHub Repository"
+        ><span>GitHub</span></a>
 </menu>
 
 <style>

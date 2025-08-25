@@ -10,7 +10,7 @@
     </svg>
     <menu>
         {#each mainMenu as item}
-            <a href={p(item.url, item.params)} use:isActiveLink>{item.label}</a>
+            <a href={p(item.url, item.params)} tabindex="0" use:isActiveLink>{item.label}</a>
         {/each}
     </menu>
     <svg viewBox="0 0 2 3" aria-hidden="true">

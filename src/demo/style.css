@@ -12,6 +12,7 @@
     --line-height: 1.5;
 
     --background: #efe8e4;
+    --background-highlight: rgba(0, 0, 0, 0.05);
     --text-color: #213547;
     --text-color-muted: #888;
 
@@ -89,6 +90,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #242424;
+        --background-highlight: rgba(255, 255, 255, 0.05);
         --text-color: rgba(255, 255, 255, 0.87);
         --text-color-muted: #888;
 
@@ -209,6 +211,18 @@ code {
     /* Prevent iOS Safari from resizing text */
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+}
+
+blockquote {
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    border-left: 4px solid var(--border-color);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    background-color: var(--background-highlight);
+}
+blockquote p {
+    margin: 0;
 }
 
 @media (max-width: 1200px) {

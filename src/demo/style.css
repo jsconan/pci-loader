@@ -3,7 +3,7 @@
 
 :root {
     --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    --font-family-code: Monaco, monospace, 'courier new', sans-serif;
+    --font-family-code: monospace, 'courier new', sans-serif;
     --font-size: 2rem;
     --font-size-code: 1.8rem;
     --font-size-button: 2rem;
@@ -26,6 +26,7 @@
 
     --code-background: #f9f9f9;
     --code-text: #000;
+    --code-border-radius: 4px;
 
     --button-background: #f9f9f9;
     --button-background-hover: #f0f0f0;

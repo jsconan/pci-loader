@@ -66,7 +66,7 @@
         font-size: inherit;
         cursor: inherit;
         line-height: inherit;
-        z-index: 1;
+        z-index: var(--z-index-controls);
     }
     select,
     .select:after {

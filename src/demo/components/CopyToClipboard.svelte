@@ -48,7 +48,7 @@
         position: absolute;
         top: 0;
         left: -10000px;
-        z-index: 10;
+        z-index: var(--z-index-hover);
         opacity: 0.5;
         padding: 0.6em 1.2em;
         line-height: 1.1;

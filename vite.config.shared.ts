@@ -3,6 +3,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { resolve } from 'path';
 import type { AliasOptions, ESBuildOptions, PluginOption, UserConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import ogPlugin from 'vite-plugin-open-graph';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import type { ViteUserConfig } from 'vitest/config';
 import packageInfo from './package.json';
@@ -34,6 +35,20 @@ const plugins: PluginOption[] = [
         insertTypesEntry: true,
         rollupTypes: true,
         copyDtsFiles: true
+    }),
+    ogPlugin({
+        basic: {
+            title: packageInfo.name,
+            description: packageInfo.description,
+            image: {
+                url: `${packageInfo.homepage.replace(/\/+$/, '')}/preview.png`,
+                alt: packageInfo.description,
+                width: 1200,
+                height: 683
+            },
+            url: packageInfo.homepage,
+            type: 'website'
+        }
     }),
     // Custom plugin to load markdown files
     {

@@ -13,7 +13,7 @@
 </script>
 
 {#if supportedLanguages.includes(lang)}
-    <Code code={text} />
+    <Code code={text} autoformat={false} />
 {:else}
     <CopyToClipboard content={text}>
         <pre class={lang}><code>{text}</code></pre>

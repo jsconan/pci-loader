@@ -3,9 +3,10 @@
 
     interface Props {
         url?: string;
+        autoformat?: boolean;
     }
 
-    let { url }: Props = $props();
+    let { url, autoformat = false }: Props = $props();
     let code: string = $state('');
     let fileName: string = $state('');
 
@@ -20,7 +21,7 @@
 
 <article>
     <header>File: <code>{fileName}</code></header>
-    <Code {code} />
+    <Code {code} {autoformat} />
 </article>
 
 <style>

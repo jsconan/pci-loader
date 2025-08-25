@@ -237,7 +237,7 @@
                     <div class={states.rendered ? 'pci-instance' : ''} bind:this={container}></div>
                     {#if output}
                         <span>{outputLabel || 'Output'}</span>
-                        <Code code={output} />
+                        <Code code={output} autoformat={true} />
                     {/if}
                 </div>
             </div>

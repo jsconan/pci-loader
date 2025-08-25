@@ -6,15 +6,18 @@
 
     interface Props {
         code: string | undefined;
+        autoformat?: boolean;
     }
 
-    let { code }: Props = $props();
+    let { code, autoformat = false }: Props = $props();
 
     let formattedCode: string | undefined = $derived(code);
 
-    (async () => {
-        formattedCode = await prettify(code || '');
-    })();
+    if (autoformat) {
+        (async () => {
+            formattedCode = await prettify(code || '');
+        })();
+    }
 </script>
 
 <CopyToClipboard content={formattedCode}>

@@ -1,6 +1,6 @@
 {
     "name": "pci-loader",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "displayName": "PCI Loader",
     "description": "A scoped PCI Loader for modern web applications.",
@@ -16,6 +16,7 @@
     "keywords": [
         "QTI",
         "PCI",
+        "IMS",
         "AMD",
         "loader"
     ],
@@ -47,7 +48,7 @@
         "build": "npm run build:lib && npm run build:static",
         "build:lib": "tsc && vite build --config vite.config.lib.ts",
         "build:static": "tsc && vite build --config vite.config.static.ts",
-        "preview": "npm run build:static && vite preview --config vite.config.static.ts",
+        "preview": "vite preview --config vite.config.static.ts",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "lint": "prettier --check . && eslint .",
@@ -77,7 +78,6 @@
         "jsdom": "^26.1.0",
         "prettier": "^3.6.2",
         "prettier-plugin-svelte": "^3.4.0",
-        "prettier-plugin-tailwindcss": "^0.6.14",
         "sv-router": "^0.8.1",
         "svelte": "^5.38.3",
         "svelte-highlight": "^7.8.3",

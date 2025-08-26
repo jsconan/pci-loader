@@ -1,4 +1,4 @@
-import type { PCI } from 'lib/pci.d.ts';
+import type { PCI } from 'lib/types.d.ts';
 
 /**
  * A registry for managing and retrieving PCI (Portable Custom Interaction) runtimes.

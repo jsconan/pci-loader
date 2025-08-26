@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v1.0.2 [2025-08-26]
+
 ## Fixed
 
 - Export the `TimeoutError` class instead of only the type declaration, and remove the non-documented export of `timedPromise`

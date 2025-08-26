@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { PCIRegistry } from 'lib/pci-registry.ts';
-import type { PCI } from 'lib/pci.d.ts';
+import type { PCI } from 'lib/types.d.ts';
 import { describe, expect, it, vi } from 'vitest';
 
 const createMockInteraction = (typeIdentifier = 'mockPCI') => ({

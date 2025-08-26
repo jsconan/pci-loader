@@ -3,6 +3,4 @@ export { PCILoader } from 'lib/pci-loader.ts';
 export { PCIRegistry } from 'lib/pci-registry.ts';
 export { TimeoutError } from 'lib/timeout.ts';
 
-export type { PCILoaderOptions } from 'lib/pci-loader.ts';
-export type { PCI } from 'lib/pci.d.ts';
-export type { SystemJS } from 'lib/systemjs.d.ts';
+export type { PCI, PCILoaderOptions, SystemJS } from 'lib/types.d.ts';

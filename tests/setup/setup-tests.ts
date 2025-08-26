@@ -1,5 +1,5 @@
 import fs from 'fs';
-import type { SystemJS } from 'lib/systemjs.d.ts';
+import type { SystemJS } from 'lib/types.d.ts';
 import { basename } from 'path';
 import 'systemjs/dist/system.js';
 import { samples, samplesHost } from 'tests/setup/config.ts';

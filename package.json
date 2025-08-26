@@ -47,7 +47,7 @@
         "build": "npm run build:lib && npm run build:static",
         "build:lib": "tsc && vite build --config vite.config.lib.ts",
         "build:static": "tsc && vite build --config vite.config.static.ts",
-        "preview": "npm run build:static && vite preview --config vite.config.static.ts",
+        "preview": "vite preview --config vite.config.static.ts",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "lint": "prettier --check . && eslint .",

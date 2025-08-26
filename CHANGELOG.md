@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Fixed
+
+- Export the `TimeoutError` class instead of only the type declaration, and remove the non-documented export of `timedPromise`
+- Remove unused dev dependencies (`prettier-plugin-tailwindcss`)
+
+## Changed
+
+- Regroup all types in a single types.d.ts file
+- Remove the build step from the preview command
+
 ## v1.0.1 [2025-08-25]
 
 ### Changed

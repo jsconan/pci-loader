@@ -1,10 +1,4 @@
-/**
- * Options for the promise timeout.
- */
-export type PromiseTimeoutOptions = {
-    timeout?: number;
-    message?: string;
-};
+import type { PromiseTimeoutOptions } from 'lib/types.d.ts';
 
 /**
  * An error that indicates a timeout has occurred.

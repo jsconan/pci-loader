@@ -1,4 +1,4 @@
-import type { AMD, ESM, SystemJS } from 'lib/systemjs.d.ts';
+import type { AMD, ESM, SystemJS } from 'lib/types.d.ts';
 
 // Dynamic module loader - must be imported before any other SystemJS module
 import 'systemjs/dist/system.js';

@@ -1,14 +1,7 @@
 import { AMDLoader } from 'lib/amd-loader.ts';
 import { PCIRegistry } from 'lib/pci-registry.ts';
-import type { PCI } from 'lib/pci.d.ts';
 import { timedPromise } from 'lib/timeout.ts';
-
-/**
- * Options for the PCI loader.
- */
-export type PCILoaderOptions = {
-    timeout?: number;
-};
+import type { PCI, PCILoaderOptions } from 'lib/types.d.ts';
 
 /**
  * Loads a PCI's runtime in a scoped manner.

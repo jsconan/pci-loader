@@ -2,7 +2,7 @@
 import { AMDLoader } from 'lib/amd-loader.ts';
 import { PCILoader } from 'lib/pci-loader.ts';
 import { PCIRegistry } from 'lib/pci-registry.ts';
-import type { PCI } from 'lib/pci.d.ts';
+import type { PCI } from 'lib/types.d.ts';
 import { samplesHost } from 'tests/setup/config.ts';
 import { describe, expect, it, vi } from 'vitest';
 

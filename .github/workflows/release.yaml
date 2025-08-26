@@ -38,7 +38,9 @@ jobs:
               env:
                   PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
               run: |
-                  echo "tag_name=${PULL_REQUEST_TITLE#*/}" >> $GITHUB_OUTPUT
+                  TAG_NAME="${PULL_REQUEST_TITLE#*/}"
+                  TAG_NAME="${TAG_NAME// /-}"
+                  echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
 
             - name: Create and push tag on main
               run: |

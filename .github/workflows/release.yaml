@@ -29,7 +29,7 @@ jobs:
 
             - name: Automerge Pull Request
               env:
-                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
               run: gh pr merge --merge --admin --delete-branch "${{ env.PULL_REQUEST_NUMBER }}"
 
@@ -49,14 +49,25 @@ jobs:
                   git tag "${{ steps.get_tag.outputs.tag_name }}"
                   git push origin "${{ steps.get_tag.outputs.tag_name }}"
 
-            - name: Create GitHub Release
-              uses: actions/create-release@v1
+            - name: Prepare release notes
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
-              with:
-                  tag_name: ${{ steps.get_tag.outputs.tag_name }}
-                  release_name: ${{ steps.get_tag.outputs.tag_name }}
-                  body: ${{ env.PULL_REQUEST_BODY }}
-                  draft: false
-                  prerelease: false
+              run: |
+                  GENERATED_NOTES=$(gh api repos/${{ github.repository }}/releases/generate-notes \
+                      -f tag_name="${{ steps.get_tag.outputs.tag_name }}" \
+                      -f target_commitish=main \
+                      --jq .body)
+                  echo "$PULL_REQUEST_BODY" > release_notes.txt
+                  echo "" >> release_notes.txt
+                  echo "$GENERATED_NOTES" >> release_notes.txt
+
+            - name: Create GitHub release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  gh release create "${{ steps.get_tag.outputs.tag_name }}" \
+                      --title "${{ steps.get_tag.outputs.tag_name }}" \
+                      --notes-file release_notes.txt \
+                      --verify-tag \
+                      --latest

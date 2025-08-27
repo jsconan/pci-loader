@@ -2,6 +2,8 @@ export declare type PCILoaderOptions = {
     timeout?: number;
 };
 
+export declare type PCILoaderStatus = 'initial' | 'loading' | 'loaded' | 'error';
+
 export declare type PromiseTimeoutOptions = {
     timeout?: number;
     message?: string;

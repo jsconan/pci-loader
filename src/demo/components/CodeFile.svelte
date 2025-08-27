@@ -10,13 +10,18 @@
     let code: string = $state('');
     let fileName: string = $state('');
 
-    (async () => {
+    $effect(() => {
         if (url) {
             fileName = url.split('/').pop() || '';
-            const response = await fetch(url);
-            code = await response.text();
+            fetch(url)
+                .then(async response => {
+                    code = await response.text();
+                })
+                .catch(err => {
+                    code = `// Error loading code: ${err.message}`;
+                });
         }
-    })();
+    });
 </script>
 
 <article>

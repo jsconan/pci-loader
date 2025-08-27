@@ -50,7 +50,7 @@ loader
 
 > **Portable Custom Interaction (PCI) defines a standard way for technology-enhanced items (TEIs) or custom interaction types** to be represented as part of the Question and Test Interoperability® (QTI®) and Accessible Portable Item Protocol® (APIP®) specifications.
 
-PCI runtimes should be defined following the [AMD API Specification](https://github.com/amdjs/amdjs-api/blob/master/AMD.md). Here is a simple example:
+PCI runtimes must be defined following the [AMD API Specification](https://github.com/amdjs/amdjs-api/blob/master/AMD.md). Here is a simple example:
 
 > **_File:_** `/path/to/myPCI/runtime.js`
 
@@ -152,12 +152,36 @@ _Parameters:_
 - `url: string` - The URL of the PCI's runtime script.
 - `name: string` - The name of the PCI (optional). If the name is provided, it must match the `typeIdentifier` of the PCI's runtime. Otherwise it will be extracted from the PCI's runtime itself.
 
+_Examples:_
+
+Create a new `PCILoader` instance for a particular PCI. Name will be extracted from the runtime.
+
+```typescript
+import { PCILoader } from 'pci-loader';
+
+const loader = new PCILoader('/path/to/myPCI/runtime.js');
+```
+
+Create a new `PCILoader` instance for a particular PCI, specifying the name, which must match the runtime's typeIdentifier.
+
+```typescript
+import { PCILoader } from 'pci-loader';
+
+const loader = new PCILoader('/path/to/myPCI/runtime.js', 'myPCI');
+```
+
 **Properties**
 
-- `name: string`
-  The name of the PCI. If not provided at construction, it will be extracted from the PCI's runtime itself. The value may be undefined if the PCI's runtime is not yet loaded.
-- `url: string`
-  The URL of the PCI's runtime.
+`name: string` - _`read-only`_ - The name of the PCI. If not provided at construction, it will be extracted from the PCI's runtime itself. The value may be undefined if the PCI's runtime is not yet loaded.
+
+`url: string` - _`read-only`_ - The URL of the PCI's runtime.
+
+`status: string` - _`read-only`_ - The status of the PCI loader. It will be:
+
+- `'initial'` when the loader is created.
+- `'loading'` when the PCI's runtime is being loaded.
+- `'loaded'` when the PCI's runtime is successfully loaded.
+- `'error'` if there was an error loading the PCI.
 
 **Methods**
 
@@ -186,25 +210,10 @@ _Returns:_
 
 _Examples:_
 
-Create a new `PCILoader` instance for a particular PCI. Name will be extracted from the runtime.
-
 ```typescript
 import { PCILoader } from 'pci-loader';
-
 const loader = new PCILoader('/path/to/myPCI/runtime.js');
-```
 
-Create a new `PCILoader` instance for a particular PCI, specifying the name, which must match the runtime's typeIdentifier.
-
-```typescript
-import { PCILoader } from 'pci-loader';
-
-const loader = new PCILoader('/path/to/myPCI/runtime.js', 'myPCI');
-```
-
-From the created `PCILoader`, we can now load the PCI's runtime, and possibly get an instance from it.
-
-```typescript
 loader
     .load()
     .then(registry => {

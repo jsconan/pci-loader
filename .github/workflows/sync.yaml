@@ -35,10 +35,12 @@ jobs:
                   git config user.email "github-actions@github.com"
 
             - name: Checkout develop
-              run: git checkout develop
+              run: |
+                  git fetch --prune origin develop
+                  git checkout -B develop origin/develop
 
             - name: Merge main into develop
-              run: git merge main
+              run: git merge --no-edit origin/main
 
             - name: Push changes
               run: git push origin develop

@@ -18,6 +18,11 @@ describe('PCILoader', () => {
         expect(loader.url).toBe(url);
     });
 
+    it('should have status initial after construction', () => {
+        const loader = new PCILoader(url, name);
+        expect(loader.status).toBe('initial');
+    });
+
     it('should construct with url only', () => {
         const loader = new PCILoader(url);
         expect(loader.name).toBeUndefined();
@@ -29,6 +34,14 @@ describe('PCILoader', () => {
         const registry = await loader.load();
         expect(registry).toBeDefined();
         expect(typeof registry?.getInstance).toBe('function');
+    });
+
+    it('should have status loading while loading and status loaded after loaded', async () => {
+        const loader = new PCILoader(url, name);
+        const promise = loader.load();
+        expect(loader.status).toBe('loading');
+        await promise;
+        expect(loader.status).toBe('loaded');
     });
 
     it('should return the same registry on subsequent loads', async () => {
@@ -58,6 +71,7 @@ describe('PCILoader', () => {
         const loader = new PCILoader(url, name);
         await expect(loader.load({ timeout: 1 })).rejects.toThrow('Loading PCI timed out');
         expect(loadSpy).toHaveBeenCalledWith(url);
+        expect(loader.status).toBe('error');
     });
 
     it('should reject if registration fails', async () => {
@@ -69,6 +83,7 @@ describe('PCILoader', () => {
         await expect(loader.load({ timeout: 1 })).rejects.toThrow('Registration failed');
         expect(registerSpy).toHaveBeenCalled();
         expect(loadSpy).toHaveBeenCalledWith(url);
+        expect(loader.status).toBe('error');
     });
 
     it('should extract name from the loaded PCI', async () => {
@@ -91,6 +106,7 @@ describe('PCILoader', () => {
         await expect(loader.load({ timeout: 0 })).rejects.toThrow(`Unexpected PCI type: ${name}`);
         expect(registerSpy).not.toHaveBeenCalled();
         expect(loadSpy).toHaveBeenCalledWith(url);
+        expect(loader.status).toBe('error');
     });
 
     it('should render and resolve with interaction and state', async () => {
@@ -120,6 +136,7 @@ describe('PCILoader', () => {
             'Loading PCI timed out'
         );
         expect(loadSpy).toHaveBeenCalledWith(url);
+        expect(loader.status).toBe('error');
     });
 
     it('should reject getInstance if rendering times out', async () => {
@@ -137,10 +154,11 @@ describe('PCILoader', () => {
         const state = {} as PCI.State;
         const loader = new PCILoader(url, name);
         await expect(loader.getInstance(container, config, state, { timeout: 1 })).rejects.toThrow(
-            'Loading PCI timed out'
+            'Getting PCI instance timed out'
         );
         expect(loadSpy).toHaveBeenCalledWith(url);
         expect(getInstanceSpy).toHaveBeenCalled();
+        expect(loader.status).toBe('loaded');
     });
 
     it('should reject getInstance if PCI fails at loading', async () => {
@@ -148,6 +166,7 @@ describe('PCILoader', () => {
         const loader = new PCILoader(loadFailureUrl);
         await expect(loader.load()).rejects.toThrow('A failure occurred');
         expect(loadSpy).toHaveBeenCalledWith(loadFailureUrl);
+        expect(loader.status).toBe('error');
     });
 
     it('should reject getInstance if PCI fails at creation', async () => {
@@ -162,5 +181,6 @@ describe('PCILoader', () => {
         );
         expect(loadSpy).toHaveBeenCalledWith(renderFailureUrl);
         expect(registerSpy).toHaveBeenCalled();
+        expect(loader.status).toBe('loaded');
     });
 });

@@ -14,9 +14,11 @@
     let formattedCode: string | undefined = $derived(code);
 
     if (autoformat) {
-        (async () => {
-            formattedCode = await prettify(code || '');
-        })();
+        $effect(() => {
+            prettify(code || '').then(async () => {
+                formattedCode = await prettify(code || '');
+            });
+        });
     }
 </script>
 

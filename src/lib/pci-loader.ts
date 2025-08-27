@@ -1,7 +1,7 @@
 import { AMDLoader } from 'lib/amd-loader.ts';
 import { PCIRegistry } from 'lib/pci-registry.ts';
 import { timedPromise } from 'lib/timeout.ts';
-import type { PCI, PCILoaderOptions } from 'lib/types.d.ts';
+import type { PCI, PCILoaderOptions, PCILoaderStatus } from 'lib/types.d.ts';
 
 /**
  * Loads a PCI's runtime in a scoped manner.
@@ -87,6 +87,7 @@ export class PCILoader {
     #name?: string;
     #url: string;
     #registered: PCI.RegistryGetter | null;
+    #status: PCILoaderStatus;
 
     /**
      * @param url - The URL of the PCI's runtime script.
@@ -97,6 +98,7 @@ export class PCILoader {
         this.#name = name;
         this.#url = url;
         this.#registered = null;
+        this.#status = 'initial';
     }
 
     /**
@@ -114,6 +116,19 @@ export class PCILoader {
      */
     get url(): string {
         return this.#url;
+    }
+
+    /**
+     * Gets the status of the PCI loader.
+     * It will be:
+     * - 'initial' when the loader is created.
+     * - 'loading' when the PCI's runtime is being loaded.
+     * - 'loaded' when the PCI's runtime is successfully loaded.
+     * - 'error' if there was an error loading the PCI.
+     * @returns The status of the PCI loader.
+     */
+    get status(): PCILoaderStatus {
+        return this.#status;
     }
 
     /**
@@ -185,7 +200,7 @@ export class PCILoader {
      * });
      */
     async load({ timeout = 30000 }: PCILoaderOptions = {}): Promise<PCI.RegistryGetter> {
-        const promise: Promise<PCI.RegistryGetter> = new Promise((resolve, reject) => {
+        let promise: Promise<PCI.RegistryGetter> = new Promise((resolve, reject) => {
             if (this.#registered) {
                 return resolve(this.#registered);
             }
@@ -205,6 +220,7 @@ export class PCILoader {
                         this.#registered = {
                             getInstance: registry.getInstance.bind(registry)
                         };
+                        this.#status = 'loaded';
                         resolve(this.#registered);
                     } catch (error) {
                         reject(error);
@@ -212,14 +228,18 @@ export class PCILoader {
                 }
             });
 
+            this.#status = 'loading';
             loader.load(this.#url).catch(reject);
         });
 
-        if (!timeout) {
-            return promise;
+        if (timeout) {
+            promise = timedPromise(promise, { timeout, message: 'Loading PCI timed out' });
         }
 
-        return timedPromise(promise, { timeout, message: 'Loading PCI timed out' });
+        return promise.catch(error => {
+            this.#status = 'error';
+            throw error;
+        });
     }
 
     /**
@@ -333,6 +353,6 @@ export class PCILoader {
             return promise;
         }
 
-        return timedPromise(promise, { timeout, message: 'Loading PCI timed out' });
+        return timedPromise(promise, { timeout, message: 'Getting PCI instance timed out' });
     }
 }

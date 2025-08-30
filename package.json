@@ -81,7 +81,6 @@
         "sv-router": "^0.8.1",
         "svelte": "^5.38.6",
         "svelte-highlight": "^7.8.3",
-        "systemjs": "^6.15.1",
         "terser": "^5.43.1",
         "typescript": "~5.9.2",
         "typescript-eslint": "^8.41.0",
@@ -91,8 +90,7 @@
         "vite-plugin-static-copy": "^3.1.2",
         "vitest": "^3.2.4"
     },
-    "peerDependencies": {
+    "dependencies": {
         "systemjs": "^6.15.1"
-    },
-    "dependencies": {}
+    }
 }

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Move the SystemJS dependency from `peerDependencies` to `dependencies` to better highlight the requirements.
+
 ## v1.2.0 [2025-08-30]
 
 ### Added

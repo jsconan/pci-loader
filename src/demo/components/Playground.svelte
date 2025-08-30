@@ -295,6 +295,9 @@
         padding: 1rem;
         margin: 1rem 0;
     }
+    .error pre {
+        white-space: pre-wrap;
+    }
 
     .code {
         margin: 1rem 0;

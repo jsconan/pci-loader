@@ -54,7 +54,7 @@
         "lint": "prettier --check . && eslint .",
         "lint:report": "eslint . --output-file eslint_report.json --format json",
         "test": "vitest run --config vite.config.lib.ts ",
-        "test:watch": "vitest run --config vite.config.lib.ts --watch",
+        "test:watch": "vitest run --config vite.config.lib.ts --watch --coverage --coverage.reporter text",
         "test:coverage": "vitest run --config vite.config.lib.ts --coverage --coverage.reporter text",
         "test:report": "vitest run --config vite.config.lib.ts --coverage --coverage.reporter text --coverage.reporter html && open .coverage/index.html",
         "test:ci": "vitest run --config vite.config.lib.ts --coverage --coverage.reporter text --coverage.reporter clover",

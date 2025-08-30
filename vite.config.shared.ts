@@ -13,10 +13,7 @@ const baseUrl = `${process.env.BASE_URL || ''}/`.replace(/\/+/g, '/');
 const markdownSuffixes = ['.md', 'LICENSE'];
 const isMarkdownFile = (id: string): boolean => markdownSuffixes.some(suffix => id.endsWith(suffix));
 
-const externalDependencies = [
-    ...Object.keys(packageInfo.dependencies || {}),
-    ...Object.keys(packageInfo.peerDependencies || {})
-];
+const externalDependencies = [...Object.keys(packageInfo.dependencies || {})];
 
 // Global constants injected by Vite's define
 const define: Record<string, string> = {

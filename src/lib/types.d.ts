@@ -64,6 +64,7 @@ export declare namespace SystemJS {
         has(name: string): boolean;
         get(name: string): object;
         set(name: string, module: object): void;
+        delete(name: string): object;
         entries(): IterableIterator<string>;
         import(name: string, parentUrl?: string, meta?: object): Promise<unknown>;
         resolve(name: string, parentUrl: string): Promise<string>;

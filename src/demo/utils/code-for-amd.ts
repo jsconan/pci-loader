@@ -5,14 +5,14 @@ export function codeImportAMDLoader(): string {
 import { AMDLoader } from 'pci-loader';
 
 // Create a new instance of the AMDLoader
-const amdLoader = new AMDLoader();
+const loader = new AMDLoader();
 `;
 }
 
 export function codeDefineAMDModule(name: string, url: string): string {
     return `
 // Map the module '${name}' to its URL
-amdLoader.define('${name}', '${url}');
+loader.define('${name}', '${url}');
 `;
 }
 
@@ -28,7 +28,7 @@ export function codeDefineAMDDependencies(deps?: components.Dependency[]): strin
 export function codeLoadAMDModule(url: string): string {
     return `
 // Load the AMD module from the specified URL
-amdLoader
+loader
     .load('${url}')
     .then(resource => {
         console.log('AMD loaded successfully');

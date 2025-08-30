@@ -86,8 +86,8 @@ import type { PCI, PCILoaderOptions, PCILoaderStatus } from 'lib/types.d.ts';
 export class PCILoader {
     #name?: string;
     #url: string;
-    #registered: PCI.RegistryGetter | null;
     #status: PCILoaderStatus;
+    #importFlow: Promise<PCI.RegistryGetter | void>;
 
     /**
      * @param url - The URL of the PCI's runtime script.
@@ -97,8 +97,8 @@ export class PCILoader {
     constructor(url: string, name?: string) {
         this.#name = name;
         this.#url = url;
-        this.#registered = null;
         this.#status = 'initial';
+        this.#importFlow = Promise.resolve();
     }
 
     /**
@@ -200,46 +200,51 @@ export class PCILoader {
      * });
      */
     async load({ timeout = 30000 }: PCILoaderOptions = {}): Promise<PCI.RegistryGetter> {
-        let promise: Promise<PCI.RegistryGetter> = new Promise((resolve, reject) => {
-            if (this.#registered) {
-                return resolve(this.#registered);
+        this.#importFlow = this.#importFlow.then((registered: PCI.RegistryGetter | void) => {
+            if (registered) {
+                return registered;
             }
 
-            const loader = new AMDLoader();
-            const registry = new PCIRegistry();
+            let promise: Promise<PCI.RegistryGetter> = new Promise((resolve, reject) => {
+                const loader = new AMDLoader();
 
-            loader.define('qtiCustomInteractionContext', {
-                register: (interaction: PCI.Registration) => {
-                    try {
-                        if (!this.#name) {
-                            this.#name = interaction.typeIdentifier;
-                        } else if (interaction.typeIdentifier !== this.#name) {
-                            return reject(new TypeError(`Unexpected PCI type: ${interaction.typeIdentifier}`));
+                loader.define('qtiCustomInteractionContext', {
+                    register: (interaction: PCI.Registration) => {
+                        try {
+                            if (!this.#name) {
+                                this.#name = interaction.typeIdentifier;
+                            } else if (interaction.typeIdentifier !== this.#name) {
+                                throw new TypeError(
+                                    `Expected PCI '${this.#name}', got '${interaction.typeIdentifier}' instead`
+                                );
+                            }
+
+                            const registry = new PCIRegistry();
+                            registry.register(interaction);
+                            this.#status = 'loaded';
+
+                            resolve({ getInstance: registry.getInstance.bind(registry) });
+                        } catch (error) {
+                            reject(error);
                         }
-                        registry.register(interaction);
-                        this.#registered = {
-                            getInstance: registry.getInstance.bind(registry)
-                        };
-                        this.#status = 'loaded';
-                        resolve(this.#registered);
-                    } catch (error) {
-                        reject(error);
                     }
-                }
+                });
+
+                this.#status = 'loading';
+                loader.load(this.#url).catch(reject);
             });
 
-            this.#status = 'loading';
-            loader.load(this.#url).catch(reject);
+            if (timeout) {
+                promise = timedPromise(promise, { timeout, message: 'Loading PCI timed out' });
+            }
+
+            return promise.catch(error => {
+                this.#status = 'error';
+                throw error;
+            });
         });
 
-        if (timeout) {
-            promise = timedPromise(promise, { timeout, message: 'Loading PCI timed out' });
-        }
-
-        return promise.catch(error => {
-            this.#status = 'error';
-            throw error;
-        });
+        return this.#importFlow as Promise<PCI.RegistryGetter>;
     }
 
     /**
@@ -330,9 +335,10 @@ export class PCILoader {
         state: PCI.State,
         { timeout = 30000 }: PCILoaderOptions = {}
     ): Promise<[PCI.Interaction, PCI.State]> {
-        const promise: Promise<[PCI.Interaction, PCI.State]> = new Promise((resolve, reject) => {
-            this.load({ timeout })
-                .then((registry: PCI.RegistryGetter) => {
+        const start = Date.now();
+        return this.load({ timeout }).then((registry: PCI.RegistryGetter) => {
+            const promise: Promise<[PCI.Interaction, PCI.State]> = new Promise((resolve, reject) => {
+                try {
                     registry.getInstance(
                         this.#name as string,
                         container,
@@ -345,14 +351,20 @@ export class PCILoader {
                         },
                         state
                     );
-                })
-                .catch(reject);
+                } catch (err) {
+                    reject(err);
+                }
+            });
+
+            if (!timeout) {
+                return promise;
+            }
+
+            const elapsed = Date.now() - start;
+            return timedPromise(promise, {
+                timeout: Math.max(timeout - elapsed, 0),
+                message: 'Getting PCI instance timed out'
+            });
         });
-
-        if (!timeout) {
-            return promise;
-        }
-
-        return timedPromise(promise, { timeout, message: 'Getting PCI instance timed out' });
     }
 }

@@ -76,6 +76,9 @@ export class AMDLoader {
      * The resource may be a preloaded module or a mapping to a different location.
      * @param name - The name of the resource.
      * @param module - An URI string or the resource object.
+     * @param esm - Tells if the module must be treated as an ESM module.
+     * - If true, the module is used as-is.
+     * - If false (default), the module is wrapped to be the default export of an ESM module.
      * @example
      * import { AMDLoader } from 'pci-loader';
      * loader = new AMDLoader();
@@ -88,7 +91,7 @@ export class AMDLoader {
      * // Map the resource to an external module path
      * loader.define('myResource', 'path/to/resource');
      */
-    define(name: string, module: string | ESM.Module, multiple: boolean = false): void {
+    define(name: string, module: string | ESM.Module, esm: boolean = false): void {
         if (typeof module == 'string') {
             this.#importMap.imports[name] = module;
         } else {
@@ -96,7 +99,7 @@ export class AMDLoader {
             // https://github.com/systemjs/systemjs/blob/6.15.1/docs/api.md#systemsetid-module---module
             const uri = `app:${name}`;
             this.#importMap.imports[name] = uri;
-            if (multiple || module[Symbol.toStringTag] === 'Module') {
+            if (esm || module[Symbol.toStringTag] === 'Module') {
                 this.#loader.set(uri, module);
             } else {
                 this.#loader.set(uri, {

@@ -864,6 +864,37 @@ const loader = new PCILoaderDev('/path/to/myPCI/runtime.js', 'myPCI');
 
 **Methods**
 
+_`PCILoaderDev.define()`_
+
+```typescript
+loader.define(
+    name: string,
+    module: object | string, multiple?: boolean
+): void
+```
+
+Defines a resource in the AMD context. The resource may be a preloaded module or a mapping to a different location.
+
+_Parameters:_
+
+- `name: string` - The name of the resource.
+- `module: string | object` - An URI string or the resource object.
+
+_Examples:_
+
+```typescript
+import { PCILoaderDev } from 'pci-loader';
+const loader = new PCILoaderDev('/path/to/myPCI/runtime.js');
+
+// Pre-define a shared resource from an already loaded module, or an existing resource
+loader.define('myResource', {
+    // resource definition
+});
+
+// Map the resource to an external module path
+loader.define('myResource', 'path/to/resource');
+```
+
 _`PCILoaderDev.load()`_
 
 ```typescript
@@ -957,37 +988,6 @@ loader
     .catch(err => {
         console.error('Error loading PCI:', err);
     });
-```
-
-_`PCILoaderDev.define()`_
-
-```typescript
-loader.define(
-    name: string,
-    module: object | string, multiple?: boolean
-): void
-```
-
-Defines a resource in the AMD context. The resource may be a preloaded module or a mapping to a different location.
-
-_Parameters:_
-
-- `name: string` - The name of the resource.
-- `module: string | object` - An URI string or the resource object.
-
-_Examples:_
-
-```typescript
-import { PCILoaderDev } from 'pci-loader';
-const loader = new PCILoaderDev('/path/to/myPCI/runtime.js');
-
-// Pre-define a shared resource from an already loaded module, or an existing resource
-loader.define('myResource', {
-    // resource definition
-});
-
-// Map the resource to an external module path
-loader.define('myResource', 'path/to/resource');
 ```
 
 _`PCILoaderDev.getInstance()`_

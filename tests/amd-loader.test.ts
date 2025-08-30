@@ -77,6 +77,35 @@ describe('AMDLoader', () => {
         await expect(loader.load('invalid')).rejects.toThrow(expect.objectContaining({ message }));
     });
 
+    it('should undefine a resource (object)', async () => {
+        const loader = new AMDLoader();
+        expect(loader.defined('testResourceObject')).toBe(false);
+        loader.define('testResourceObject', { foo: 'bar' });
+        expect(loader.defined('testResourceObject')).toBe(true);
+        expect(await loader.load('testResourceObject')).toEqual({ foo: 'bar' });
+        loader.undefine('testResourceObject');
+        expect(loader.defined('testResourceObject')).toBe(false);
+    });
+
+    it('should undefine a resource (module path)', async () => {
+        const loader = new AMDLoader();
+        expect(loader.defined('testResourcePath')).toBe(false);
+        loader.define('testResourcePath', `${samplesHost}/resource.js`);
+        expect(loader.defined('testResourcePath')).toBe(true);
+        expect(await loader.load('testResourcePath')).toEqual({ foo: 'bar' });
+        loader.undefine('testResourcePath');
+        expect(loader.defined('testResourcePath')).toBe(false);
+    });
+
+    it('should undefine a loaded resource', async () => {
+        const loader = new AMDLoader();
+        expect(loader.defined(`${samplesHost}/resource.js`)).toBe(false);
+        await loader.load(`${samplesHost}/resource.js`);
+        expect(loader.defined(`${samplesHost}/resource.js`)).toBe(true);
+        loader.undefine(`${samplesHost}/resource.js`);
+        expect(loader.defined(`${samplesHost}/resource.js`)).toBe(false);
+    });
+
     it('should load a resource module and return exports', async () => {
         const loader = new AMDLoader();
         const exports = await loader.load(`${samplesHost}/resource.js`);

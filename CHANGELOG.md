@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v1.2.0 [2025-08-30]
+
+### Added
+
+- Implement a development version of the PCI loader
+- Add an API to remove a resource from the AMD context
+
 ## v1.1.1 [2025-08-30]
 
 ### Fixed

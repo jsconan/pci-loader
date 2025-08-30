@@ -6,15 +6,16 @@
     import Tab from 'demo/components/Tab.svelte';
     import TabBar from 'demo/components/TabBar.svelte';
     import type { components } from 'demo/types.d.ts';
+    import { codeDefineAMDDependencies, codeImportAMDLoader, codeLoadAMDModule } from 'demo/utils/code-for-amd.ts';
     import {
-        codeDefineAMDDependencies,
-        codeDefineAMDModule,
-        codeImportAMDLoader,
-        codeLoadAMDModule
-    } from 'demo/utils/code-for-amd.ts';
-    import { codeImportPCILoader, codeLoadPCI, codeLoadPCIThenRender, codeRenderPCI } from 'demo/utils/code-for-pci.ts';
+        codeImportPCILoader,
+        codeImportPCILoaderDev,
+        codeLoadPCI,
+        codeLoadPCIThenRender,
+        codeRenderPCI
+    } from 'demo/utils/code-for-pci.ts';
     import { serializeCode } from 'demo/utils/utils.ts';
-    import { AMDLoader, PCILoader, type PCI } from 'src/main';
+    import { AMDLoader, PCILoader, PCILoaderDev, type PCI } from 'src/main';
     import { onDestroy, onMount } from 'svelte';
 
     interface Props {
@@ -66,14 +67,17 @@
         amdLoader = null;
         output = '';
         error = '';
+        files = getAMDFiles();
 
-        if (samples[selectedSample].type === 'pci') {
-            code = codeImportPCILoader(samples[selectedSample].url);
-            files = getPCIFiles();
+        let initCode = '';
+        if (samples[selectedSample].type === 'amd') {
+            initCode = codeImportAMDLoader();
+        } else if (samples[selectedSample].dependencies) {
+            initCode = codeImportPCILoaderDev(samples[selectedSample].url);
         } else {
-            code = codeImportAMDLoader() + codeDefineAMDDependencies(samples[selectedSample].dependencies);
-            files = getAMDFiles();
+            initCode = codeImportPCILoader(samples[selectedSample].url);
         }
+        code = initCode + codeDefineAMDDependencies(samples[selectedSample].dependencies);
     }
 
     function load() {
@@ -94,24 +98,18 @@
         return deps;
     }
 
-    function getAMDLoader(): AMDLoader {
-        const loader = new AMDLoader();
-        let amdCode = codeImportAMDLoader();
-
+    function defineAMDResources(loader: AMDLoader | PCILoaderDev): void {
         for (const resource of samples[selectedSample].dependencies || []) {
             loader.define(resource.name, resource.url);
-            amdCode += codeDefineAMDModule(resource.name, resource.url);
         }
-
-        amdCode += codeLoadAMDModule(samples[selectedSample].url);
-        code = amdCode;
-
-        return loader;
     }
 
     function loadAMD() {
         states.loading = true;
-        amdLoader = getAMDLoader();
+        amdLoader = new AMDLoader();
+        code += codeLoadAMDModule(samples[selectedSample].url);
+
+        defineAMDResources(amdLoader);
         amdLoader
             .load(samples[selectedSample].url)
             .then((resource: unknown) => {
@@ -124,19 +122,20 @@
             });
     }
 
-    function getPCIFiles(): string[] {
-        return [samples[selectedSample].url];
-    }
-
-    function getPCILoader(): PCILoader {
+    function getPCILoader(): PCILoader | PCILoaderDev {
+        if (samples[selectedSample].dependencies) {
+            const loader = new PCILoaderDev(samples[selectedSample].url);
+            defineAMDResources(loader as PCILoaderDev);
+            return loader;
+        }
         return new PCILoader(samples[selectedSample].url);
     }
 
     function loadPCI() {
         states.loading = true;
-        code = codeImportPCILoader(samples[selectedSample].url) + codeLoadPCI();
-
         pciLoader = getPCILoader();
+        code += codeLoadPCI();
+
         pciLoader
             .load()
             .then(() => {
@@ -152,9 +151,16 @@
 
         if (!pciLoader) {
             pciLoader = getPCILoader();
-            code = codeImportPCILoader(samples[selectedSample].url) + codeRenderPCI();
+            code += codeRenderPCI();
         } else {
-            code = codeImportPCILoader(samples[selectedSample].url) + codeLoadPCIThenRender();
+            if (samples[selectedSample].dependencies) {
+                code =
+                    codeImportPCILoaderDev(samples[selectedSample].url) +
+                    codeDefineAMDDependencies(samples[selectedSample].dependencies);
+            } else {
+                code = codeImportPCILoader(samples[selectedSample].url);
+            }
+            code += codeLoadPCIThenRender();
         }
 
         pciLoader

@@ -1,89 +1,12 @@
 import { AMDLoader } from 'lib/amd-loader.ts';
 import { PCIRegistry } from 'lib/pci-registry.ts';
 import { timedPromise } from 'lib/timeout.ts';
-import type { PCI, PCILoaderOptions, PCILoaderStatus } from 'lib/types.d.ts';
+import type { ESM, PCI, PCILoaderOptions, PCILoaderStatus } from 'lib/types.d.ts';
 
 /**
- * Loads a PCI's runtime in a scoped manner.
- *
- * This loader is used to load PCI runtimes dynamically, ensuring that they are properly
- * registered and can be accessed within the context of the application.
- *
- * The necessary dependencies are automatically loaded and made available
- * to the PCI's runtime. From the host, only the resource `qtiCustomInteractionContext`
- * is exposed. All other resources must be embedded in the PCI's runtime, using the AMD format.
- *
- * The loader needs the URL to the PCI's runtime script. The name of the PCI can also be provided,
- * otherwise it will be extracted from the PCI's runtime itself. If the name is provided, it must
- * match the `typeIdentifier` of the PCI's runtime.
- * @example
- * import { PCILoader } from 'pci-loader';
- * let loader;
- *
- * // Create a new PCILoader instance for a particular PCI. Name will be extracted from the runtime.
- * loader = new PCILoader('/path/to/myPCI/runtime.js');
- *
- * // Create a new PCILoader instance for a particular PCI, specifying the name.
- * // Name must match the runtime's typeIdentifier.
- * loader = new PCILoader('/path/to/myPCI/runtime.js', 'myPCI');
- *
- * // Prepare the container and config for rendering the PCI
- * // Be sure to have the container prefilled with the layout expected by the PCI's runtime
- * const container = document.querySelector('#pci-container');
- *
- * // The configuration for the PCI.
- * const config = {
- *     // The properties to pass to the PCI
- *     properties: {
- *         key: 'value'
- *     },
- *
- *     // The response variable the PCI is bound to
- *     boundTo: { 'RESPONSE': { base: { string: 'value' } } },
- *
- *     // The instance of the PCI is returned by a callback
- *     onready: (interaction, state) => {
- *         // Handle the PCI's readiness
- *     },
- * };
- *
- * // The state can contain anything needed to restore the PCI
- * const state = {};
- *
- * // Load the PCI's runtime, then get an instance from the registry.
- * loader
- *     .load()
- *     .then(registry => registry.getInstance(loader.name, container, config, state))
- *     .catch(error => console.error(error));
- *
- * // A PCI instance can also be rendered into a container right after the loading process
- * loader
- *     .getInstance(container, config, state)
- *     .then(([interaction, state]) => {
- *         // Do something with the rendered interaction and its state
- *     })
- *     .catch(error => console.error(error));
- *
- * // Minimal implementation of a PCI's runtime
- * // file: /path/to/myPCI/runtime.js
- * define('myPCI', ['qtiCustomInteractionContext'], function (qtiCustomInteractionContext) {
- *     qtiCustomInteractionContext.register({
- *         typeIdentifier: 'myPCI',
- *         getInstance(dom, config, state) {
- *             const myInteraction = {
- *                 getResponse() { },
- *                 getState() { },
- *                 oncompleted() { }
- *             };
- *
- *             if (typeof config.onready === 'function') {
- *                 config.onready(myInteraction, state);
- *             }
- *         }
- *     });
- * });
+ * Base class for PCI loaders, containing common functionality.
  */
-export class PCILoader {
+class BasePCILoader {
     #name?: string;
     #url: string;
     #status: PCILoaderStatus;
@@ -199,50 +122,61 @@ export class PCILoader {
      *     });
      * });
      */
-    async load({ timeout = 30000 }: PCILoaderOptions = {}): Promise<PCI.RegistryGetter> {
-        this.#importFlow = this.#importFlow.then((registered: PCI.RegistryGetter | void) => {
-            if (registered) {
-                return registered;
-            }
+    async load(
+        { timeout = 30000 }: PCILoaderOptions = {},
+        loader: AMDLoader | undefined = undefined
+    ): Promise<PCI.RegistryGetter> {
+        this.#importFlow = this.#importFlow
+            .catch(() => {
+                if (loader) {
+                    loader.undefine(this.url);
+                }
+            })
+            .then((registered: PCI.RegistryGetter | void) => {
+                if (registered) {
+                    return registered;
+                }
 
-            let promise: Promise<PCI.RegistryGetter> = new Promise((resolve, reject) => {
-                const loader = new AMDLoader();
-
-                loader.define('qtiCustomInteractionContext', {
-                    register: (interaction: PCI.Registration) => {
-                        try {
-                            if (!this.#name) {
-                                this.#name = interaction.typeIdentifier;
-                            } else if (interaction.typeIdentifier !== this.#name) {
-                                throw new TypeError(
-                                    `Expected PCI '${this.#name}', got '${interaction.typeIdentifier}' instead`
-                                );
-                            }
-
-                            const registry = new PCIRegistry();
-                            registry.register(interaction);
-                            this.#status = 'loaded';
-
-                            resolve({ getInstance: registry.getInstance.bind(registry) });
-                        } catch (error) {
-                            reject(error);
-                        }
+                let promise: Promise<PCI.RegistryGetter> = new Promise((resolve, reject) => {
+                    if (!loader) {
+                        loader = new AMDLoader();
                     }
+
+                    loader.define('qtiCustomInteractionContext', {
+                        register: (interaction: PCI.Registration) => {
+                            try {
+                                if (!this.#name) {
+                                    this.#name = interaction.typeIdentifier;
+                                } else if (interaction.typeIdentifier !== this.#name) {
+                                    throw new TypeError(
+                                        `Expected PCI '${this.#name}', got '${interaction.typeIdentifier}' instead`
+                                    );
+                                }
+
+                                const registry = new PCIRegistry();
+                                registry.register(interaction);
+                                this.#status = 'loaded';
+
+                                resolve({ getInstance: registry.getInstance.bind(registry) });
+                            } catch (error) {
+                                reject(error);
+                            }
+                        }
+                    });
+
+                    this.#status = 'loading';
+                    loader.load(this.#url).catch(reject);
                 });
 
-                this.#status = 'loading';
-                loader.load(this.#url).catch(reject);
-            });
+                if (timeout) {
+                    promise = timedPromise(promise, { timeout, message: 'Loading PCI timed out' });
+                }
 
-            if (timeout) {
-                promise = timedPromise(promise, { timeout, message: 'Loading PCI timed out' });
-            }
-
-            return promise.catch(error => {
-                this.#status = 'error';
-                throw error;
+                return promise.catch(error => {
+                    this.#status = 'error';
+                    throw error;
+                });
             });
-        });
 
         return this.#importFlow as Promise<PCI.RegistryGetter>;
     }
@@ -366,5 +300,212 @@ export class PCILoader {
                 message: 'Getting PCI instance timed out'
             });
         });
+    }
+}
+
+/**
+ * Loads a PCI's runtime in a scoped manner.
+ *
+ * This loader is used to load PCI runtimes dynamically, ensuring that they are properly
+ * registered and can be accessed within the context of the application.
+ *
+ * The necessary dependencies are automatically loaded and made available
+ * to the PCI's runtime. From the host, only the resource `qtiCustomInteractionContext`
+ * is exposed. All other resources must be embedded in the PCI's runtime, using the AMD format.
+ *
+ * The loader needs the URL to the PCI's runtime script. The name of the PCI can also be provided,
+ * otherwise it will be extracted from the PCI's runtime itself. If the name is provided, it must
+ * match the `typeIdentifier` of the PCI's runtime.
+ * @example
+ * import { PCILoader } from 'pci-loader';
+ * let loader;
+ *
+ * // Create a new PCILoader instance for a particular PCI. Name will be extracted from the runtime.
+ * loader = new PCILoader('/path/to/myPCI/runtime.js');
+ *
+ * // Create a new PCILoader instance for a particular PCI, specifying the name.
+ * // Name must match the runtime's typeIdentifier.
+ * loader = new PCILoader('/path/to/myPCI/runtime.js', 'myPCI');
+ *
+ * // Prepare the container and config for rendering the PCI
+ * // Be sure to have the container prefilled with the layout expected by the PCI's runtime
+ * const container = document.querySelector('#pci-container');
+ *
+ * // The configuration for the PCI.
+ * const config = {
+ *     // The properties to pass to the PCI
+ *     properties: {
+ *         key: 'value'
+ *     },
+ *
+ *     // The response variable the PCI is bound to
+ *     boundTo: { 'RESPONSE': { base: { string: 'value' } } },
+ *
+ *     // The instance of the PCI is returned by a callback
+ *     onready: (interaction, state) => {
+ *         // Handle the PCI's readiness
+ *     },
+ * };
+ *
+ * // The state can contain anything needed to restore the PCI
+ * const state = {};
+ *
+ * // Prepare the resources for the PCI
+ * loader.define('myResource', '/path/to/myResource.js');
+ *
+ * // Load the PCI's runtime, then get an instance from the registry.
+ * loader
+ *     .load()
+ *     .then(registry => registry.getInstance(loader.name, container, config, state))
+ *     .catch(error => console.error(error));
+ *
+ * // A PCI instance can also be rendered into a container right after the loading process
+ * loader
+ *     .getInstance(container, config, state)
+ *     .then(([interaction, state]) => {
+ *         // Do something with the rendered interaction and its state
+ *     })
+ *     .catch(error => console.error(error));
+ *
+ * // Minimal implementation of a PCI's runtime
+ * // file: /path/to/myPCI/runtime.js
+ * define('myPCI', ['qtiCustomInteractionContext'], function (qtiCustomInteractionContext) {
+ *     qtiCustomInteractionContext.register({
+ *         typeIdentifier: 'myPCI',
+ *         getInstance(dom, config, state) {
+ *             const myInteraction = {
+ *                 getResponse() { },
+ *                 getState() { },
+ *                 oncompleted() { }
+ *             };
+ *
+ *             if (typeof config.onready === 'function') {
+ *                 config.onready(myInteraction, state);
+ *             }
+ *         }
+ *     });
+ * });
+ */
+export class PCILoader extends BasePCILoader {
+    async load({ timeout = 30000 }: PCILoaderOptions = {}): Promise<PCI.RegistryGetter> {
+        // Call the base class load method, removing the loader parameter.
+        return super.load({ timeout });
+    }
+}
+
+/**
+ * PCI Loader for development purposes. Loads a PCI's runtime in a scoped manner, allowing to
+ * define external dependencies.
+ *
+ * This loader is used to load PCI runtimes dynamically, ensuring that they are properly
+ * registered and can be accessed within the context of the application.
+ *
+ * The necessary dependencies are automatically loaded and made available
+ * to the PCI's runtime. Usually, only the resource `qtiCustomInteractionContext`
+ * is exposed from the host, other resources should be embedded in the runtime. However,
+ * in development mode, other resources can be defined separately and loaded from the host.
+ *
+ * The loader needs the URL to the PCI's runtime script. The name of the PCI can also be provided,
+ * otherwise it will be extracted from the PCI's runtime itself. If the name is provided, it must
+ * match the `typeIdentifier` of the PCI's runtime.
+ * * @example
+ * import { PCILoaderDev } from 'pci-loader';
+ * let loader;
+ *
+ * // Create a new PCILoader instance for a particular PCI.
+ * loader = new PCILoaderDev('/path/to/myPCI/runtime.js');
+ *
+ * // Define PCI resources
+ * loader.define('myResource', '/path/to/myResource.js');
+ * loader.define('data', { value: 42});
+ *
+ * // Prepare the container and config for rendering the PCI
+ * // Be sure to have the container prefilled with the layout expected by the PCI's runtime
+ * const container = document.querySelector('#pci-container');
+ *
+ * // The configuration for the PCI.
+ * const config = {
+ *     // The properties to pass to the PCI
+ *     properties: {
+ *         key: 'value'
+ *     },
+ *
+ *     // The response variable the PCI is bound to
+ *     boundTo: { 'RESPONSE': { base: { string: 'value' } } },
+ *
+ *     // The instance of the PCI is returned by a callback
+ *     onready: (interaction, state) => {
+ *         // Handle the PCI's readiness
+ *     },
+ * };
+ *
+ * // The state can contain anything needed to restore the PCI
+ * const state = {};
+ *
+ * // Load the PCI's runtime, then get an instance from the registry.
+ * loader
+ *     .getInstance(container, config, state)
+ *     .then(([interaction, state]) => {
+ *         // Do something with the rendered interaction and its state
+ *     })
+ *     .catch(error => console.error(error));
+ *
+ * // Implementation of a PCI's runtime, with external resources
+ * // file: /path/to/myPCI/runtime.js
+ * define('myPCI', ['qtiCustomInteractionContext', 'myResource', 'data'], function (
+ *     qtiCustomInteractionContext,
+ *     myResource,
+ *     data
+ * ) {
+ *     qtiCustomInteractionContext.register({
+ *         typeIdentifier: 'myPCI',
+ *         getInstance(dom, config, state) {
+ *             const myInteraction = {
+ *                 getResponse() { },
+ *                 getState() { },
+ *                 oncompleted() { }
+ *             };
+ *
+ *             if (typeof config.onready === 'function') {
+ *                 config.onready(myInteraction, state);
+ *             }
+ *         }
+ *     });
+ * });
+ */
+export class PCILoaderDev extends BasePCILoader {
+    #loader: AMDLoader;
+
+    constructor(url: string, name?: string) {
+        super(url, name);
+        this.#loader = new AMDLoader();
+    }
+
+    async load({ timeout = 30000 }: PCILoaderOptions = {}): Promise<PCI.RegistryGetter> {
+        return super.load({ timeout }, this.#loader);
+    }
+
+    /**
+     * Defines a resource in the AMD context of the PCI loader.
+     * The resource may be a preloaded module or a mapping to a different location.
+     * @param name - The name of the resource.
+     * @param module - An URI string or the resource object.
+     * @param esm - Tells if the module must be treated as an ESM module.
+     * - If true, the module is used as-is.
+     * - If false (default), the module is wrapped to be the default export of an ESM module.
+     * @example
+     * import { PCILoaderDev } from 'pci-loader';
+     * const loader = new PCILoaderDev('/path/to/myPCI/runtime.js');
+     *
+     * // Pre-define a shared resource from an already loaded module, or an existing resource
+     * loader.define('myResource', {
+     *     // resource definition
+     * });
+     *
+     * // Map the resource to an external module path
+     * loader.define('myResource', 'path/to/resource');
+     */
+    define(name: string, module: string | ESM.Module, esm: boolean = false): void {
+        this.#loader.define(name, module, esm);
     }
 }

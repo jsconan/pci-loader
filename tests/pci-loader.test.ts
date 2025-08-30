@@ -39,6 +39,7 @@ describe('PCILoader', () => {
     it('should have status loading while loading and status loaded after loaded', async () => {
         const loader = new PCILoader(url, name);
         const promise = loader.load();
+        await Promise.resolve(); // let the promise start
         expect(loader.status).toBe('loading');
         await promise;
         expect(loader.status).toBe('loaded');
@@ -46,11 +47,14 @@ describe('PCILoader', () => {
 
     it('should return the same registry on subsequent loads', async () => {
         const loader = new PCILoader(url, name);
-        const firstRegistry = await loader.load();
-        const secondRegistry = await loader.load();
+        const firstRegistryPromise = loader.load();
+        const secondRegistryPromise = loader.load();
+        expect(firstRegistryPromise).not.toBe(secondRegistryPromise);
+        const firstRegistry = await firstRegistryPromise;
         expect(firstRegistry).toBeDefined();
-        expect(firstRegistry).toBe(secondRegistry);
         expect(typeof firstRegistry?.getInstance).toBe('function');
+        const secondRegistry = await secondRegistryPromise;
+        expect(firstRegistry).toBe(secondRegistry);
     });
 
     it('should load and register a PCI', async () => {
@@ -103,7 +107,7 @@ describe('PCILoader', () => {
         const loadSpy = vi.spyOn(AMDLoader.prototype, 'load');
         const registerSpy = vi.spyOn(PCIRegistry.prototype, 'register');
         const loader = new PCILoader(url, 'foo');
-        await expect(loader.load({ timeout: 0 })).rejects.toThrow(`Unexpected PCI type: ${name}`);
+        await expect(loader.load({ timeout: 0 })).rejects.toThrow(`Expected PCI 'foo', got '${name}' instead`);
         expect(registerSpy).not.toHaveBeenCalled();
         expect(loadSpy).toHaveBeenCalledWith(url);
         expect(loader.status).toBe('error');

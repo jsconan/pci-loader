@@ -20,6 +20,22 @@ describe('AMDLoader', () => {
         expect(() => loader.define('testResourcePathNoError', '/path/to/module.js')).not.toThrow();
     });
 
+    it('should accept to redefine a resource (object)', async () => {
+        const loader = new AMDLoader();
+        loader.define('testResourceObject', { foo: 'bar' });
+        expect(await loader.load('testResourceObject')).toEqual({ foo: 'bar' });
+        loader.define('testResourceObject', { value: 42 });
+        expect(await loader.load('testResourceObject')).toEqual({ value: 42 });
+    });
+
+    it('should accept to redefine a resource (module path)', async () => {
+        const loader = new AMDLoader();
+        loader.define('testResourceObject', `${samplesHost}/resource.js`);
+        expect(await loader.load('testResourceObject')).toEqual({ foo: 'bar' });
+        loader.define('testResourceObject', `${samplesHost}/value.js`);
+        expect(await loader.load('testResourceObject')).toEqual({ value: 42 });
+    });
+
     it('should load a defined resource (object)', async () => {
         const loader = new AMDLoader();
         loader.define('testResourceObject', { foo: 'bar' });

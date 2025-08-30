@@ -3,14 +3,23 @@ export function codeImportPCILoader(url: string): string {
 import { PCILoader } from 'pci-loader';
 
 // Create a new instance of the PCILoader for the PCI's runtime '${url}'
-const pciLoader = new PCILoader('${url}');
+const loader = new PCILoader('${url}');
+`;
+}
+
+export function codeImportPCILoaderDev(url: string): string {
+    return `// Import the PCILoader from the 'pci-loader' package
+import { PCILoaderDev } from 'pci-loader';
+
+// Create a new instance of the PCILoader for the PCI's runtime '${url}'
+const loader = new PCILoaderDev('${url}');
 `;
 }
 
 export function codeLoadPCI(): string {
     return `
 // Load the PCI's runtime
-pciLoader
+loader
     .load()
     .then(registry => {
         console.log('PCI loaded successfully');
@@ -27,7 +36,7 @@ pciLoader
 export function codeLoadPCIThenRender(): string {
     return `
 // Load the PCI's runtime
-pciLoader
+loader
     .load()
     .then(registry => {
         console.log('PCI loaded successfully');
@@ -117,7 +126,7 @@ const config = {
 const state = {};
 
 // Load and render the PCI
-pciLoader
+loader
     .getInstance(container, config, state)
     .then(([interaction, initState]) => {
         console.log('PCI loaded and rendered successfully');

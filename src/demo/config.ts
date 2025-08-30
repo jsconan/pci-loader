@@ -14,6 +14,21 @@ export const samples: Record<string, components.Sample> = {
         url: `${baseUrl}samples/pci.js`,
         label: 'PCI example.'
     },
+    pciDev: {
+        type: 'pci',
+        url: `${baseUrl}samples/pci-runtime.js`,
+        label: 'PCI example (development).',
+        dependencies: [
+            {
+                name: 'hello',
+                url: `${baseUrl}samples/pci-hello.js`
+            },
+            {
+                name: 'style',
+                url: `${baseUrl}samples/pci-style.js`
+            }
+        ]
+    },
     pciLoadFailure: {
         type: 'pci',
         url: `${baseUrl}samples/pci-load-failure.js`,

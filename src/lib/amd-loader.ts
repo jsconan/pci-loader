@@ -23,7 +23,7 @@ let importFlow = Promise.resolve();
  * process is completed before calling the next load.
  * @example
  * import { AMDLoader } from 'pci-loader';
- * loader = new AMDLoader();
+ * const loader = new AMDLoader();
  *
  * // Pre-define a shared resource from an already loaded module, or an existing resource
  * loader.define('myResource', {
@@ -81,7 +81,7 @@ export class AMDLoader {
      * - If false (default), the module is wrapped to be the default export of an ESM module.
      * @example
      * import { AMDLoader } from 'pci-loader';
-     * loader = new AMDLoader();
+     * const loader = new AMDLoader();
      *
      * // Pre-define a shared resource from an already loaded module, or an existing resource
      * loader.define('myResource', {
@@ -111,6 +111,44 @@ export class AMDLoader {
     }
 
     /**
+     * Removes a resource from the AMD context.
+     * @param name - The name or the url of the resource to remove.
+     * @example
+     * import { AMDLoader } from 'pci-loader';
+     * const loader = new AMDLoader();
+     *
+     * // Load a module
+     * loader.load('path/to/resource');
+     *
+     * // Remove the module
+     * loader.undefine('path/to/resource');
+     */
+    undefine(name: string): void {
+        if (name in this.#importMap.imports) {
+            delete this.#importMap.imports[name];
+            this.#loader.delete(`app:${name}`);
+        } else {
+            this.#loader.delete(name);
+        }
+    }
+
+    /**
+     * Checks if a resource is defined in the AMD context.
+     * @param name - The name or the url of the resource.
+     * @returns True if the resource is defined, false otherwise.
+     * @example
+     * import { AMDLoader } from 'pci-loader';
+     * const loader = new AMDLoader();
+     *
+     * // Check if a resource is defined
+     * const isDefined = loader.defined('path/to/resource');
+     * console.log(isDefined); // true or false
+     */
+    defined(name: string): boolean {
+        return name in this.#importMap.imports || this.#loader.has(name);
+    }
+
+    /**
      * Loads a scoped AMD module or bundle, and returns a promise that resolves with the module exports.
      * It temporarily overrides the global define function, ensuring only the declared module's
      * dependencies are available during loading.
@@ -119,7 +157,7 @@ export class AMDLoader {
      * @returns A promise that resolves with the module exports.
      * @example
      * import { AMDLoader } from 'pci-loader';
-     * loader = new AMDLoader();
+     * const loader = new AMDLoader();
      *
      * // Load the module and use the resources
      * loader.load('path/to/myModule').then(exports => {

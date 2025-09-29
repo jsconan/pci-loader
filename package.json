@@ -75,7 +75,7 @@
         "eslint-config-prettier": "^10.1.8",
         "globals": "^16.3.0",
         "husky": "^9.1.7",
-        "jsdom": "^26.1.0",
+        "jsdom": "^27.0.0",
         "prettier": "^3.6.2",
         "prettier-plugin-svelte": "^3.4.0",
         "sv-router": "^0.8.1",

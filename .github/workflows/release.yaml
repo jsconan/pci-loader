@@ -2,21 +2,26 @@ name: Release
 
 on:
     pull_request:
-        branches: [main]
+        branches:
+            - main
+        types:
+            - opened
+            - labeled
 
 permissions:
     contents: write
     pull-requests: write
     checks: read
+    id-token: write
 
 jobs:
     merge_pull_request:
-        if: startsWith(github.head_ref, 'release/')
+        if: contains(github.event.pull_request.labels.*.name, 'release')
         runs-on: ubuntu-latest
 
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
               with:
                   ref: main
                   fetch-depth: 0
@@ -38,16 +43,18 @@ jobs:
               env:
                   PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
               run: |
-                  TAG_NAME="${PULL_REQUEST_TITLE#*/}"
+                  TAG_NAME="$PULL_REQUEST_TITLE"
+                  if [[ "$TAG_NAME" == */* ]]; then
+                      TAG_NAME="${TAG_NAME#*/}"
+                  fi
                   TAG_NAME="${TAG_NAME// /-}"
-                  echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+                  echo "tag_name=$TAG_NAME" >> "$GITHUB_OUTPUT"
 
             - name: Create and push tag on main
               run: |
-                  git fetch --all
-                  git fetch --tags
+                  git fetch origin main --tags
                   git checkout main
-                  git pull
+                  git pull --ff-only origin main
                   git tag "${{ steps.get_tag.outputs.tag_name }}"
                   git push origin "${{ steps.get_tag.outputs.tag_name }}"
 

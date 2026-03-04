@@ -148,7 +148,7 @@ describe('PCILoader', () => {
         const getInstance = PCIRegistry.prototype.getInstance;
         const getInstanceSpy = vi
             .spyOn(PCIRegistry.prototype, 'getInstance')
-            .mockImplementation(function getInstanceSpy(this: PCIRegistry, ...args) {
+            .mockImplementation(function getInstanceSpyFn(this: PCIRegistry, ...args) {
                 setTimeout(() => {
                     getInstance.apply(this, args);
                 }, 10);

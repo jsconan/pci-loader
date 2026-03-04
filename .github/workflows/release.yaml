@@ -52,10 +52,9 @@ jobs:
 
             - name: Create and push tag on main
               run: |
-                  git fetch --all
-                  git fetch --tags
+                  git fetch origin main --tags
                   git checkout main
-                  git pull
+                  git pull --ff-only origin main
                   git tag "${{ steps.get_tag.outputs.tag_name }}"
                   git push origin "${{ steps.get_tag.outputs.tag_name }}"
 

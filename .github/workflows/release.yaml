@@ -2,16 +2,21 @@ name: Release
 
 on:
     pull_request:
-        branches: [main]
+        branches:
+            - main
+        types:
+            - opened
+            - labeled
 
 permissions:
     contents: write
     pull-requests: write
     checks: read
+    id-token: write
 
 jobs:
     merge_pull_request:
-        if: startsWith(github.head_ref, 'release/')
+        if: contains(github.event.pull_request.labels.*.name, 'release')
         runs-on: ubuntu-latest
 
         steps:

@@ -6,7 +6,7 @@
 
 > **ModuleSetter** = (`module`) => `void`
 
-Defined in: [src/lib/types.d.ts:48](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L48)
+Defined in: [src/lib/types.d.ts:48](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L48)
 
 ## Parameters
 

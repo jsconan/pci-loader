@@ -4,7 +4,7 @@
 
 # Interface: ModuleDeclaration
 
-Defined in: [src/lib/types.d.ts:52](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L52)
+Defined in: [src/lib/types.d.ts:52](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L52)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [src/lib/types.d.ts:52](https://github.com/jsconan/pci-loader/blob/8
 
 > **execute**: () => `void`
 
-Defined in: [src/lib/types.d.ts:54](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L54)
+Defined in: [src/lib/types.d.ts:54](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L54)
 
 #### Returns
 
@@ -24,4 +24,4 @@ Defined in: [src/lib/types.d.ts:54](https://github.com/jsconan/pci-loader/blob/8
 
 > **setters**: [`ModuleSetter`](../type-aliases/ModuleSetter.md)[]
 
-Defined in: [src/lib/types.d.ts:53](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L53)
+Defined in: [src/lib/types.d.ts:53](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L53)

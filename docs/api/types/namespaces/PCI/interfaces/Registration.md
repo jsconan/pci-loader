@@ -4,7 +4,7 @@
 
 # Interface: Registration
 
-Defined in: [src/lib/types.d.ts:271](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L271)
+Defined in: [src/lib/types.d.ts:271](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L271)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [src/lib/types.d.ts:271](https://github.com/jsconan/pci-loader/blob/
 
 > **getInstance**: (`container`, `configuration`, `state`) => `void`
 
-Defined in: [src/lib/types.d.ts:273](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L273)
+Defined in: [src/lib/types.d.ts:273](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L273)
 
 #### Parameters
 
@@ -38,4 +38,4 @@ Defined in: [src/lib/types.d.ts:273](https://github.com/jsconan/pci-loader/blob/
 
 > **typeIdentifier**: `string`
 
-Defined in: [src/lib/types.d.ts:272](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L272)
+Defined in: [src/lib/types.d.ts:272](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L272)

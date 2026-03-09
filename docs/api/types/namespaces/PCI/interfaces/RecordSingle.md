@@ -4,7 +4,7 @@
 
 # Interface: RecordSingle
 
-Defined in: [src/lib/types.d.ts:186](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L186)
+Defined in: [src/lib/types.d.ts:186](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L186)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [src/lib/types.d.ts:186](https://github.com/jsconan/pci-loader/blob/
 
 > **base**: [`SingleBoolean`](SingleBoolean.md) \| [`SingleInteger`](SingleInteger.md) \| [`SingleFloat`](SingleFloat.md) \| [`SingleString`](SingleString.md) \| [`SinglePoint`](SinglePoint.md) \| [`SinglePair`](SinglePair.md) \| [`SingleDirectedPair`](SingleDirectedPair.md) \| [`SingleDuration`](SingleDuration.md) \| [`SingleFile`](SingleFile.md) \| [`SingleURI`](SingleURI.md) \| [`SingleIdentifier`](SingleIdentifier.md) \| [`SingleIntOrIdentifier`](SingleIntOrIdentifier.md) \| `null`
 
-Defined in: [src/lib/types.d.ts:188](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L188)
+Defined in: [src/lib/types.d.ts:188](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L188)
 
 ***
 
@@ -20,4 +20,4 @@ Defined in: [src/lib/types.d.ts:188](https://github.com/jsconan/pci-loader/blob/
 
 > **name**: `string`
 
-Defined in: [src/lib/types.d.ts:187](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L187)
+Defined in: [src/lib/types.d.ts:187](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L187)

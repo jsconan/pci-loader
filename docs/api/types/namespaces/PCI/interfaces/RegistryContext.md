@@ -4,7 +4,7 @@
 
 # Interface: RegistryContext
 
-Defined in: [src/lib/types.d.ts:283](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L283)
+Defined in: [src/lib/types.d.ts:283](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L283)
 
 ## Extended by
 
@@ -16,7 +16,7 @@ Defined in: [src/lib/types.d.ts:283](https://github.com/jsconan/pci-loader/blob/
 
 > **register**: (`interaction`) => `void`
 
-Defined in: [src/lib/types.d.ts:284](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L284)
+Defined in: [src/lib/types.d.ts:284](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L284)
 
 #### Parameters
 

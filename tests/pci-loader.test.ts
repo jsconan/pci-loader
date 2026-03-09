@@ -57,6 +57,26 @@ describe('PCILoader', () => {
         expect(firstRegistry).toBe(secondRegistry);
     });
 
+    it('should gracefully proceed when previous importFlow failed with no loader', async () => {
+        // loader parameter is undefined for PCILoader; this ensures the catch block
+        // executes but the `if (loader)` branch is skipped.
+        const undefineSpy = vi.spyOn(AMDLoader.prototype, 'undefine');
+        const loadSpy = vi.spyOn(AMDLoader.prototype, 'load').mockRejectedValueOnce(new Error('fail'));
+
+        const loader = new PCILoader(url, name);
+        await expect(loader.load()).rejects.toThrow('fail');
+
+        // second invocation should trigger the catch from the rejected importFlow
+        try {
+            await loader.load();
+        } catch {
+            // ignore result
+        }
+
+        expect(undefineSpy).not.toHaveBeenCalled();
+        loadSpy.mockRestore();
+    });
+
     it('should load and register a PCI', async () => {
         const loadSpy = vi.spyOn(AMDLoader.prototype, 'load');
         const registerSpy = vi.spyOn(PCIRegistry.prototype, 'register');
@@ -148,7 +168,7 @@ describe('PCILoader', () => {
         const getInstance = PCIRegistry.prototype.getInstance;
         const getInstanceSpy = vi
             .spyOn(PCIRegistry.prototype, 'getInstance')
-            .mockImplementation(function getInstanceSpy(this: PCIRegistry, ...args) {
+            .mockImplementation(function getInstanceSpyFn(this: PCIRegistry, ...args) {
                 setTimeout(() => {
                     getInstance.apply(this, args);
                 }, 10);

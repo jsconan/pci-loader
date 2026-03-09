@@ -1,0 +1,11 @@
+{
+    "entryPoints": ["src/lib"],
+    "entryPointStrategy": "expand",
+    "tsconfig": "tsconfig.json",
+    "exclude": ["**/__tests__/**", "tests", "**/*.test.*"],
+    "plugin": ["typedoc-plugin-markdown"],
+    "hideBreadcrumbs": true,
+    "hideGenerator": true,
+    "out": "docs/api",
+    "readme": "none"
+}

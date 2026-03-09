@@ -1,0 +1,27 @@
+[**pci-loader**](../../../../README.md)
+
+***
+
+# Interface: SingleFile
+
+Defined in: [src/lib/types.d.ts:133](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L133)
+
+## Properties
+
+### file
+
+> **file**: `object`
+
+Defined in: [src/lib/types.d.ts:134](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L134)
+
+#### data
+
+> **data**: `string`
+
+#### mime
+
+> **mime**: `string`
+
+#### name
+
+> **name**: `string`

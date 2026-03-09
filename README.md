@@ -24,6 +24,10 @@ A tiny TypeScript library for dynamically loading and managing PCI (Portable Cus
 npm install pci-loader
 ```
 
+## Documentation
+
+See the full project documentation at [docs/README.md](https://github.com/jsconan/pci-loader/tree/main/docs/README.md).
+
 ## Example Usage
 
 ```typescript

@@ -4,7 +4,7 @@
 
 # Interface: RecordNull
 
-Defined in: [src/lib/types.d.ts:183](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L183)
+Defined in: [src/lib/types.d.ts:183](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L183)
 
 ## Properties
 
@@ -12,4 +12,4 @@ Defined in: [src/lib/types.d.ts:183](https://github.com/jsconan/pci-loader/blob/
 
 > **name**: `null`
 
-Defined in: [src/lib/types.d.ts:184](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L184)
+Defined in: [src/lib/types.d.ts:184](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L184)

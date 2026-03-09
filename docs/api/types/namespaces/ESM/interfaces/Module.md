@@ -4,7 +4,7 @@
 
 # Interface: Module
 
-Defined in: [src/lib/types.d.ts:15](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L15)
+Defined in: [src/lib/types.d.ts:15](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L15)
 
 ## Indexable
 
@@ -16,7 +16,7 @@ Defined in: [src/lib/types.d.ts:15](https://github.com/jsconan/pci-loader/blob/a
 
 > `optional` **\_\_useDefault**: `boolean`
 
-Defined in: [src/lib/types.d.ts:16](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L16)
+Defined in: [src/lib/types.d.ts:16](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L16)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [src/lib/types.d.ts:16](https://github.com/jsconan/pci-loader/blob/a
 
 > `optional` **\[toStringTag\]**: `string`
 
-Defined in: [src/lib/types.d.ts:18](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L18)
+Defined in: [src/lib/types.d.ts:18](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L18)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [src/lib/types.d.ts:18](https://github.com/jsconan/pci-loader/blob/a
 
 > `optional` **default**: `unknown`
 
-Defined in: [src/lib/types.d.ts:17](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L17)
+Defined in: [src/lib/types.d.ts:17](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L17)

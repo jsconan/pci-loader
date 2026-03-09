@@ -4,7 +4,7 @@
 
 # Class: PCIRegistry
 
-Defined in: [src/lib/pci-registry.ts:55](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/pci-registry.ts#L55)
+Defined in: [src/lib/pci-registry.ts:55](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/pci-registry.ts#L55)
 
 A registry for managing and retrieving PCI (Portable Custom Interaction) runtimes.
 
@@ -71,7 +71,7 @@ registry.getInstance(typeIdentifier, container, config, state);
 
 > **new PCIRegistry**(): `PCIRegistry`
 
-Defined in: [src/lib/pci-registry.ts:58](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/pci-registry.ts#L58)
+Defined in: [src/lib/pci-registry.ts:58](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/pci-registry.ts#L58)
 
 #### Returns
 
@@ -83,7 +83,7 @@ Defined in: [src/lib/pci-registry.ts:58](https://github.com/jsconan/pci-loader/b
 
 > **getInstance**(`typeIdentifier`, `container`, `configuration`, `state`): `void`
 
-Defined in: [src/lib/pci-registry.ts:151](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/pci-registry.ts#L151)
+Defined in: [src/lib/pci-registry.ts:151](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/pci-registry.ts#L151)
 
 Retrieves a registered PCI's runtime, then gets a new PCI's instance, passing in the provided parameters.
 
@@ -167,7 +167,7 @@ registry.getInstance(typeIdentifier, container, config, state);
 
 > **register**(`interaction`): `void`
 
-Defined in: [src/lib/pci-registry.ts:92](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/pci-registry.ts#L92)
+Defined in: [src/lib/pci-registry.ts:92](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/pci-registry.ts#L92)
 
 Registers a PCI's runtime.
 

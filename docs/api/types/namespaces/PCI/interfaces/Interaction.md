@@ -4,7 +4,7 @@
 
 # Interface: Interaction
 
-Defined in: [src/lib/types.d.ts:276](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L276)
+Defined in: [src/lib/types.d.ts:276](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L276)
 
 ## Indexable
 
@@ -16,7 +16,7 @@ Defined in: [src/lib/types.d.ts:276](https://github.com/jsconan/pci-loader/blob/
 
 > **getResponse**: () => [`Response`](../type-aliases/Response.md)
 
-Defined in: [src/lib/types.d.ts:277](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L277)
+Defined in: [src/lib/types.d.ts:277](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L277)
 
 #### Returns
 
@@ -28,7 +28,7 @@ Defined in: [src/lib/types.d.ts:277](https://github.com/jsconan/pci-loader/blob/
 
 > **getState**: () => [`State`](State.md)
 
-Defined in: [src/lib/types.d.ts:278](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L278)
+Defined in: [src/lib/types.d.ts:278](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L278)
 
 #### Returns
 
@@ -40,7 +40,7 @@ Defined in: [src/lib/types.d.ts:278](https://github.com/jsconan/pci-loader/blob/
 
 > **oncompleted**: () => `void`
 
-Defined in: [src/lib/types.d.ts:279](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L279)
+Defined in: [src/lib/types.d.ts:279](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L279)
 
 #### Returns
 

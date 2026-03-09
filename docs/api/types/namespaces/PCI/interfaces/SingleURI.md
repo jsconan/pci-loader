@@ -4,7 +4,7 @@
 
 # Interface: SingleURI
 
-Defined in: [src/lib/types.d.ts:136](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L136)
+Defined in: [src/lib/types.d.ts:136](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L136)
 
 ## Properties
 
@@ -12,4 +12,4 @@ Defined in: [src/lib/types.d.ts:136](https://github.com/jsconan/pci-loader/blob/
 
 > **uri**: `string`
 
-Defined in: [src/lib/types.d.ts:137](https://github.com/jsconan/pci-loader/blob/af96c6e74f902d53b7813b22e08c81504096d239/src/lib/types.d.ts#L137)
+Defined in: [src/lib/types.d.ts:137](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L137)

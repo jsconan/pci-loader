@@ -86,6 +86,28 @@ describe('PCILoaderDev', () => {
         expect(firstRegistry).toBe(secondRegistry);
     });
 
+    it('should call undefine on provided loader when previous importFlow failed', async () => {
+        const undefineSpy = vi.spyOn(AMDLoader.prototype, 'undefine');
+
+        // Make the first AMDLoader.load call reject to create a rejected importFlow
+        const loadSpy = vi.spyOn(AMDLoader.prototype, 'load').mockRejectedValueOnce(new Error('simulated fail'));
+
+        const loader = new PCILoaderDev(runtimeUrl, name);
+
+        await expect(loader.load()).rejects.toThrow('simulated fail');
+
+        // Second load should trigger the importFlow.catch branch which calls undefine
+        try {
+            await loader.load();
+        } catch {
+            // ignore second load result
+        }
+
+        expect(undefineSpy).toHaveBeenCalledWith(runtimeUrl);
+
+        loadSpy.mockRestore();
+    });
+
     it('should load and register a PCI', async () => {
         const loadSpy = vi.spyOn(AMDLoader.prototype, 'load');
         const registerSpy = vi.spyOn(PCIRegistry.prototype, 'register');

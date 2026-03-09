@@ -4,7 +4,7 @@
 
 # Class: PCILoaderDev
 
-Defined in: [src/lib/pci-loader.ts:476](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/pci-loader.ts#L476)
+Defined in: [src/lib/pci-loader.ts:476](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/pci-loader.ts#L476)
 
 PCI Loader for development purposes. Loads a PCI's runtime in a scoped manner, allowing to
 define external dependencies.
@@ -100,7 +100,7 @@ define('myPCI', ['qtiCustomInteractionContext', 'myResource', 'data'], function 
 
 > **new PCILoaderDev**(`url`, `name?`): `PCILoaderDev`
 
-Defined in: [src/lib/pci-loader.ts:479](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/pci-loader.ts#L479)
+Defined in: [src/lib/pci-loader.ts:479](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/pci-loader.ts#L479)
 
 #### Parameters
 
@@ -128,7 +128,7 @@ Defined in: [src/lib/pci-loader.ts:479](https://github.com/jsconan/pci-loader/bl
 
 > **get** **name**(): `string` \| `undefined`
 
-Defined in: [src/lib/pci-loader.ts:32](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/pci-loader.ts#L32)
+Defined in: [src/lib/pci-loader.ts:32](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/pci-loader.ts#L32)
 
 Gets the name of the PCI. If not provided at construction, it will be extracted from the
 PCI's runtime itself. The value may be undefined if the PCI's runtime is not yet loaded.
@@ -151,7 +151,7 @@ The name of the PCI.
 
 > **get** **status**(): [`PCILoaderStatus`](../../types/type-aliases/PCILoaderStatus.md)
 
-Defined in: [src/lib/pci-loader.ts:53](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/pci-loader.ts#L53)
+Defined in: [src/lib/pci-loader.ts:53](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/pci-loader.ts#L53)
 
 Gets the status of the PCI loader.
 It will be:
@@ -178,7 +178,7 @@ The status of the PCI loader.
 
 > **get** **url**(): `string`
 
-Defined in: [src/lib/pci-loader.ts:40](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/pci-loader.ts#L40)
+Defined in: [src/lib/pci-loader.ts:40](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/pci-loader.ts#L40)
 
 Gets the URL of the PCI's runtime.
 
@@ -198,7 +198,7 @@ The URL of the PCI's runtime.
 
 > **define**(`name`, `module`, `esm?`): `void`
 
-Defined in: [src/lib/pci-loader.ts:508](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/pci-loader.ts#L508)
+Defined in: [src/lib/pci-loader.ts:508](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/pci-loader.ts#L508)
 
 Defines a resource in the AMD context of the PCI loader.
 The resource may be a preloaded module or a mapping to a different location.
@@ -250,7 +250,7 @@ loader.define('myResource', 'path/to/resource');
 
 > **getInstance**(`container`, `configuration`, `state`, `options?`): `Promise`\<\[[`Interaction`](../../types/namespaces/PCI/interfaces/Interaction.md), [`State`](../../types/namespaces/PCI/interfaces/State.md)\]\>
 
-Defined in: [src/lib/pci-loader.ts:266](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/pci-loader.ts#L266)
+Defined in: [src/lib/pci-loader.ts:266](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/pci-loader.ts#L266)
 
 Gets an instance of the PCI, rendered inside the specified container.
 
@@ -362,7 +362,7 @@ define('myPCI', ['qtiCustomInteractionContext'], function (qtiCustomInteractionC
 
 > **load**(`options?`): `Promise`\<[`RegistryGetter`](../../types/namespaces/PCI/interfaces/RegistryGetter.md)\>
 
-Defined in: [src/lib/pci-loader.ts:484](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/pci-loader.ts#L484)
+Defined in: [src/lib/pci-loader.ts:484](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/pci-loader.ts#L484)
 
 Loads the PCI's runtime in a scoped manner. Subsequent calls to load will return the same
 registry object.

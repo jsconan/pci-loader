@@ -4,7 +4,7 @@
 
 # Interface: SingleFloat
 
-Defined in: [src/lib/types.d.ts:115](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L115)
+Defined in: [src/lib/types.d.ts:115](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L115)
 
 ## Properties
 
@@ -12,4 +12,4 @@ Defined in: [src/lib/types.d.ts:115](https://github.com/jsconan/pci-loader/blob/
 
 > **float**: `number`
 
-Defined in: [src/lib/types.d.ts:116](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L116)
+Defined in: [src/lib/types.d.ts:116](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L116)

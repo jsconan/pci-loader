@@ -4,7 +4,7 @@
 
 # Interface: ImportMap
 
-Defined in: [src/lib/types.d.ts:57](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L57)
+Defined in: [src/lib/types.d.ts:57](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L57)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [src/lib/types.d.ts:57](https://github.com/jsconan/pci-loader/blob/6
 
 > **imports**: `Record`\<`string`, `string`\>
 
-Defined in: [src/lib/types.d.ts:58](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L58)
+Defined in: [src/lib/types.d.ts:58](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L58)
 
 ***
 
@@ -20,4 +20,4 @@ Defined in: [src/lib/types.d.ts:58](https://github.com/jsconan/pci-loader/blob/6
 
 > **scopes**: `Record`\<`string`, `Record`\<`string`, `string`\>\>
 
-Defined in: [src/lib/types.d.ts:59](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L59)
+Defined in: [src/lib/types.d.ts:59](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L59)

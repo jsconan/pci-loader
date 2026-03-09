@@ -4,7 +4,7 @@
 
 # Interface: MultipleURI
 
-Defined in: [src/lib/types.d.ts:173](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L173)
+Defined in: [src/lib/types.d.ts:173](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L173)
 
 ## Properties
 
@@ -12,4 +12,4 @@ Defined in: [src/lib/types.d.ts:173](https://github.com/jsconan/pci-loader/blob/
 
 > **uri**: `string`[]
 
-Defined in: [src/lib/types.d.ts:174](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L174)
+Defined in: [src/lib/types.d.ts:174](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L174)

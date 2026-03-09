@@ -4,7 +4,7 @@
 
 # Class: AMDLoader
 
-Defined in: [src/lib/amd-loader.ts:46](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/amd-loader.ts#L46)
+Defined in: [src/lib/amd-loader.ts:46](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/amd-loader.ts#L46)
 
 A utility for loading AMD modules and defining resources in a scoped context using [SystemJS](https://github.com/systemjs/systemjs).
 
@@ -46,7 +46,7 @@ loader.load('myResource').then(exports => {
 
 > **new AMDLoader**(): `AMDLoader`
 
-Defined in: [src/lib/amd-loader.ts:51](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/amd-loader.ts#L51)
+Defined in: [src/lib/amd-loader.ts:51](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/amd-loader.ts#L51)
 
 #### Returns
 
@@ -58,7 +58,7 @@ Defined in: [src/lib/amd-loader.ts:51](https://github.com/jsconan/pci-loader/blo
 
 > **define**(`name`, `module`, `esm?`): `void`
 
-Defined in: [src/lib/amd-loader.ts:94](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/amd-loader.ts#L94)
+Defined in: [src/lib/amd-loader.ts:94](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/amd-loader.ts#L94)
 
 Defines a resource in the AMD context.
 The resource may be a preloaded module or a mapping to a different location.
@@ -110,7 +110,7 @@ loader.define('myResource', 'path/to/resource');
 
 > **defined**(`name`): `boolean`
 
-Defined in: [src/lib/amd-loader.ts:147](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/amd-loader.ts#L147)
+Defined in: [src/lib/amd-loader.ts:147](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/amd-loader.ts#L147)
 
 Checks if a resource is defined in the AMD context.
 
@@ -145,7 +145,7 @@ console.log(isDefined); // true or false
 
 > **load**(`modulePath`): `Promise`\<`unknown`\>
 
-Defined in: [src/lib/amd-loader.ts:172](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/amd-loader.ts#L172)
+Defined in: [src/lib/amd-loader.ts:172](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/amd-loader.ts#L172)
 
 Loads a scoped AMD module or bundle, and returns a promise that resolves with the module exports.
 It temporarily overrides the global define function, ensuring only the declared module's
@@ -189,7 +189,7 @@ loader.load('myResource').then(exports => {
 
 > **undefine**(`name`): `void`
 
-Defined in: [src/lib/amd-loader.ts:126](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/amd-loader.ts#L126)
+Defined in: [src/lib/amd-loader.ts:126](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/amd-loader.ts#L126)
 
 Removes a resource from the AMD context.
 

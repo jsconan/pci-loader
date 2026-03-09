@@ -4,7 +4,7 @@
 
 # Interface: MultipleFile
 
-Defined in: [src/lib/types.d.ts:170](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L170)
+Defined in: [src/lib/types.d.ts:170](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L170)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [src/lib/types.d.ts:170](https://github.com/jsconan/pci-loader/blob/
 
 > **file**: `object`[]
 
-Defined in: [src/lib/types.d.ts:171](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L171)
+Defined in: [src/lib/types.d.ts:171](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L171)
 
 #### data
 

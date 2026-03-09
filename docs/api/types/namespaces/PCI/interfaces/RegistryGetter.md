@@ -4,7 +4,7 @@
 
 # Interface: RegistryGetter
 
-Defined in: [src/lib/types.d.ts:286](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L286)
+Defined in: [src/lib/types.d.ts:286](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L286)
 
 ## Extended by
 
@@ -16,7 +16,7 @@ Defined in: [src/lib/types.d.ts:286](https://github.com/jsconan/pci-loader/blob/
 
 > **getInstance**: (`typeIdentifier`, `container`, `configuration`, `state`) => `void`
 
-Defined in: [src/lib/types.d.ts:287](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L287)
+Defined in: [src/lib/types.d.ts:287](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L287)
 
 #### Parameters
 

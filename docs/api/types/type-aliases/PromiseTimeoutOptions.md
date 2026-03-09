@@ -6,7 +6,7 @@
 
 > **PromiseTimeoutOptions** = `object`
 
-Defined in: [src/lib/types.d.ts:7](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L7)
+Defined in: [src/lib/types.d.ts:7](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L7)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [src/lib/types.d.ts:7](https://github.com/jsconan/pci-loader/blob/63
 
 > `optional` **message**: `string`
 
-Defined in: [src/lib/types.d.ts:9](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L9)
+Defined in: [src/lib/types.d.ts:9](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L9)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [src/lib/types.d.ts:9](https://github.com/jsconan/pci-loader/blob/63
 
 > `optional` **timeout**: `number`
 
-Defined in: [src/lib/types.d.ts:8](https://github.com/jsconan/pci-loader/blob/634585163ed784ea002528d26d7ecf06bef7e8d2/src/lib/types.d.ts#L8)
+Defined in: [src/lib/types.d.ts:8](https://github.com/jsconan/pci-loader/blob/8562834b20b0bf934925e898954ad77c94a65ff0/src/lib/types.d.ts#L8)

@@ -4,7 +4,7 @@
 
 # Interface: Config
 
-Defined in: [src/lib/types.d.ts:262](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L262)
+Defined in: [src/lib/types.d.ts:262](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L262)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [src/lib/types.d.ts:262](https://github.com/jsconan/pci-loader/blob/
 
 > `optional` **boundTo**: `object`
 
-Defined in: [src/lib/types.d.ts:265](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L265)
+Defined in: [src/lib/types.d.ts:265](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L265)
 
 #### Index Signature
 
@@ -24,7 +24,7 @@ Defined in: [src/lib/types.d.ts:265](https://github.com/jsconan/pci-loader/blob/
 
 > `optional` **ondone**: (`interaction`, `response`, `state`, `status`) => `void`
 
-Defined in: [src/lib/types.d.ts:267](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L267)
+Defined in: [src/lib/types.d.ts:267](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L267)
 
 #### Parameters
 
@@ -54,7 +54,7 @@ Defined in: [src/lib/types.d.ts:267](https://github.com/jsconan/pci-loader/blob/
 
 > **onready**: (`interaction`, `state`) => `void`
 
-Defined in: [src/lib/types.d.ts:266](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L266)
+Defined in: [src/lib/types.d.ts:266](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L266)
 
 #### Parameters
 
@@ -76,7 +76,7 @@ Defined in: [src/lib/types.d.ts:266](https://github.com/jsconan/pci-loader/blob/
 
 > **properties**: `Record`\<`string`, `unknown`\>
 
-Defined in: [src/lib/types.d.ts:263](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L263)
+Defined in: [src/lib/types.d.ts:263](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L263)
 
 ***
 
@@ -84,7 +84,7 @@ Defined in: [src/lib/types.d.ts:263](https://github.com/jsconan/pci-loader/blob/
 
 > `optional` **status**: `string`
 
-Defined in: [src/lib/types.d.ts:268](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L268)
+Defined in: [src/lib/types.d.ts:268](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L268)
 
 ***
 
@@ -92,4 +92,4 @@ Defined in: [src/lib/types.d.ts:268](https://github.com/jsconan/pci-loader/blob/
 
 > `optional` **templateVariables**: `Record`\<`string`, [`Response`](../type-aliases/Response.md)\>
 
-Defined in: [src/lib/types.d.ts:264](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L264)
+Defined in: [src/lib/types.d.ts:264](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L264)

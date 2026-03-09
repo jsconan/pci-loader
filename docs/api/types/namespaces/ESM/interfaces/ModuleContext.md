@@ -4,7 +4,7 @@
 
 # Interface: ModuleContext
 
-Defined in: [src/lib/types.d.ts:27](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L27)
+Defined in: [src/lib/types.d.ts:27](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L27)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [src/lib/types.d.ts:27](https://github.com/jsconan/pci-loader/blob/4
 
 > **meta**: `object`
 
-Defined in: [src/lib/types.d.ts:28](https://github.com/jsconan/pci-loader/blob/49dbdc6ccdfcce0182045037e9f3fcba9e303796/src/lib/types.d.ts#L28)
+Defined in: [src/lib/types.d.ts:28](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L28)
 
 #### url
 

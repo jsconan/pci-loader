@@ -122,6 +122,9 @@ jobs:
               continue-on-error: true
               run: npm list
 
+            - name: Update npm version
+              run: npm i -g npm@latest
+
             - name: Install dependencies
               run: npm ci
 

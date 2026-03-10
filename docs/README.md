@@ -2,6 +2,8 @@
 
 `pci-loader` is a tiny TypeScript library for dynamically loading and managing PCI (Portable Custom Interaction) runtimes in modern web applications. It provides a scoped loader and registry for PCI modules, supporting AMD and SystemJS formats.
 
+Try the live demo: [demo](https://jsconan.github.io/pci-loader/).
+
 ## Features
 
 - **Dynamic PCI loading**: Load PCI runtimes at runtime from URLs.

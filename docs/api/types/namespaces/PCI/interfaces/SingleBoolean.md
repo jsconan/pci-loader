@@ -4,7 +4,7 @@
 
 # Interface: SingleBoolean
 
-Defined in: [src/lib/types.d.ts:109](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L109)
+Defined in: [src/lib/types.d.ts:109](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L109)
 
 ## Properties
 
@@ -12,4 +12,4 @@ Defined in: [src/lib/types.d.ts:109](https://github.com/jsconan/pci-loader/blob/
 
 > **boolean**: `boolean`
 
-Defined in: [src/lib/types.d.ts:110](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L110)
+Defined in: [src/lib/types.d.ts:110](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L110)

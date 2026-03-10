@@ -6,7 +6,7 @@
 
 > **ModuleExportSignature** = (`_export`, `_context`) => [`ModuleDeclaration`](../interfaces/ModuleDeclaration.md)
 
-Defined in: [src/lib/types.d.ts:47](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L47)
+Defined in: [src/lib/types.d.ts:47](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L47)
 
 ## Parameters
 

@@ -4,7 +4,7 @@
 
 # Interface: Constructor
 
-Defined in: [src/lib/types.d.ts:82](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L82)
+Defined in: [src/lib/types.d.ts:82](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L82)
 
 ## Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/lib/types.d.ts:82](https://github.com/jsconan/pci-loader/blob/0
 
 > **new Constructor**(): [`Instance`](Instance.md)
 
-Defined in: [src/lib/types.d.ts:83](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L83)
+Defined in: [src/lib/types.d.ts:83](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L83)
 
 #### Returns
 
@@ -32,7 +32,7 @@ Defined in: [src/lib/types.d.ts:83](https://github.com/jsconan/pci-loader/blob/0
 
 > **constructor**: `Constructor`
 
-Defined in: [src/lib/types.d.ts:63](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L63)
+Defined in: [src/lib/types.d.ts:63](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L63)
 
 #### Inherited from
 
@@ -44,7 +44,7 @@ Defined in: [src/lib/types.d.ts:63](https://github.com/jsconan/pci-loader/blob/0
 
 > **registerRegistry**: `Record`\<`string`, [`ModuleRegistration`](../type-aliases/ModuleRegistration.md)\>
 
-Defined in: [src/lib/types.d.ts:79](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L79)
+Defined in: [src/lib/types.d.ts:79](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L79)
 
 #### Inherited from
 
@@ -56,7 +56,7 @@ Defined in: [src/lib/types.d.ts:79](https://github.com/jsconan/pci-loader/blob/0
 
 > **addImportMap**(`map`): `void`
 
-Defined in: [src/lib/types.d.ts:78](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L78)
+Defined in: [src/lib/types.d.ts:78](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L78)
 
 #### Parameters
 
@@ -78,7 +78,7 @@ Defined in: [src/lib/types.d.ts:78](https://github.com/jsconan/pci-loader/blob/0
 
 > **delete**(`name`): `object`
 
-Defined in: [src/lib/types.d.ts:67](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L67)
+Defined in: [src/lib/types.d.ts:67](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L67)
 
 #### Parameters
 
@@ -100,7 +100,7 @@ Defined in: [src/lib/types.d.ts:67](https://github.com/jsconan/pci-loader/blob/0
 
 > **entries**(): `IterableIterator`\<`string`\>
 
-Defined in: [src/lib/types.d.ts:68](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L68)
+Defined in: [src/lib/types.d.ts:68](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L68)
 
 #### Returns
 
@@ -116,7 +116,7 @@ Defined in: [src/lib/types.d.ts:68](https://github.com/jsconan/pci-loader/blob/0
 
 > **get**(`name`): `object`
 
-Defined in: [src/lib/types.d.ts:65](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L65)
+Defined in: [src/lib/types.d.ts:65](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L65)
 
 #### Parameters
 
@@ -138,7 +138,7 @@ Defined in: [src/lib/types.d.ts:65](https://github.com/jsconan/pci-loader/blob/0
 
 > **getRegister**(): [`ModuleRegistration`](../type-aliases/ModuleRegistration.md) \| `undefined`
 
-Defined in: [src/lib/types.d.ts:77](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L77)
+Defined in: [src/lib/types.d.ts:77](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L77)
 
 #### Returns
 
@@ -154,7 +154,7 @@ Defined in: [src/lib/types.d.ts:77](https://github.com/jsconan/pci-loader/blob/0
 
 > **has**(`name`): `boolean`
 
-Defined in: [src/lib/types.d.ts:64](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L64)
+Defined in: [src/lib/types.d.ts:64](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L64)
 
 #### Parameters
 
@@ -176,7 +176,7 @@ Defined in: [src/lib/types.d.ts:64](https://github.com/jsconan/pci-loader/blob/0
 
 > **import**(`name`, `parentUrl?`, `meta?`): `Promise`\<`unknown`\>
 
-Defined in: [src/lib/types.d.ts:69](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L69)
+Defined in: [src/lib/types.d.ts:69](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L69)
 
 #### Parameters
 
@@ -206,7 +206,7 @@ Defined in: [src/lib/types.d.ts:69](https://github.com/jsconan/pci-loader/blob/0
 
 > **instantiate**(`url`, `firstParentUrl`): `Promise`\<[`ModuleRegistration`](../type-aliases/ModuleRegistration.md) \| `undefined`\>
 
-Defined in: [src/lib/types.d.ts:71](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L71)
+Defined in: [src/lib/types.d.ts:71](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L71)
 
 #### Parameters
 
@@ -232,7 +232,7 @@ Defined in: [src/lib/types.d.ts:71](https://github.com/jsconan/pci-loader/blob/0
 
 > **register**(`nameOrDeps`, `depsOrExports`, `exports?`): `void`
 
-Defined in: [src/lib/types.d.ts:72](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L72)
+Defined in: [src/lib/types.d.ts:72](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L72)
 
 #### Parameters
 
@@ -262,7 +262,7 @@ Defined in: [src/lib/types.d.ts:72](https://github.com/jsconan/pci-loader/blob/0
 
 > **resolve**(`name`, `parentUrl`): `Promise`\<`string`\>
 
-Defined in: [src/lib/types.d.ts:70](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L70)
+Defined in: [src/lib/types.d.ts:70](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L70)
 
 #### Parameters
 
@@ -288,7 +288,7 @@ Defined in: [src/lib/types.d.ts:70](https://github.com/jsconan/pci-loader/blob/0
 
 > **set**(`name`, `module`): `void`
 
-Defined in: [src/lib/types.d.ts:66](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/types.d.ts#L66)
+Defined in: [src/lib/types.d.ts:66](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/types.d.ts#L66)
 
 #### Parameters
 

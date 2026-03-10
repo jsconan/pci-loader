@@ -1,6 +1,6 @@
 {
     "name": "pci-loader",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "license": "MIT",
     "displayName": "PCI Loader",
     "description": "A scoped PCI Loader for modern web applications.",
@@ -80,7 +80,7 @@
         "prettier": "^3.8.1",
         "prettier-plugin-svelte": "^3.5.1",
         "sv-router": "^0.14.0",
-        "svelte": "^5.53.8",
+        "svelte": "^5.53.9",
         "svelte-highlight": "^7.9.0",
         "terser": "^5.46.0",
         "typedoc": "^0.28.17",

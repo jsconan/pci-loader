@@ -4,7 +4,7 @@
 
 # Class: TimeoutError
 
-Defined in: [src/lib/timeout.ts:6](https://github.com/jsconan/pci-loader/blob/0bf555818137e3e2900f667be7325a3a028d0555/src/lib/timeout.ts#L6)
+Defined in: [src/lib/timeout.ts:6](https://github.com/jsconan/pci-loader/blob/127aab7ff06870fee80ad42511f9a58fd9c04b9d/src/lib/timeout.ts#L6)
 
 An error that indicates a timeout has occurred.
 

@@ -2,11 +2,10 @@ name: Release
 
 on:
     pull_request:
-        branches:
-            - main
-        types:
-            - opened
-            - labeled
+        branches: ['main']
+        types: ['labeled']
+
+    workflow_dispatch:
 
 permissions:
     contents: write

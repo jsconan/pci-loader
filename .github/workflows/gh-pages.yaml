@@ -8,8 +8,7 @@ on:
 
     workflow_run:
         workflows: ['Release']
-        types:
-            - completed
+        types: ['completed']
 
 permissions:
     contents: read

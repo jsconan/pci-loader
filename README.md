@@ -26,6 +26,8 @@ npm install pci-loader
 
 ## Documentation
 
+Try the live demo: [demo](https://jsconan.github.io/pci-loader/).
+
 Full documentation is in the project docs: [docs/README.md](https://github.com/jsconan/pci-loader/blob/main/docs/README.md). It's also published on ReadTheDocs: [pci-loader.readthedocs.io](https://pci-loader.readthedocs.io/en/latest/).
 
 ## Example Usage

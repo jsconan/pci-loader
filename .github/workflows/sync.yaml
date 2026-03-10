@@ -2,14 +2,13 @@ name: Synchronize branches
 
 on:
     push:
-        branches: [main]
+        branches: ['main']
 
     workflow_dispatch:
 
     workflow_run:
         workflows: ['Release']
-        types:
-            - completed
+        types: ['completed']
 
 permissions:
     contents: write
